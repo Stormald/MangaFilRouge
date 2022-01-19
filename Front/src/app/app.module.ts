@@ -3,12 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DemoComponent } from './components/demo/demo.component';
+import { ListAnimeComponent } from './pages/list-anime/list-anime.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DemoComponent
+    ListAnimeComponent
   ],
   imports: [
     BrowserModule,

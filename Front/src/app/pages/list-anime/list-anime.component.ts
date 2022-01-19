@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 declare var require: any;
-//import {} from 'ouranilist-api';
 
 @Component({
-  selector: 'app-demo',
-  templateUrl: './demo.component.html',
-  styleUrls: ['./demo.component.css']
+  selector: 'app-list-anime',
+  templateUrl: './list-anime.component.html',
+  styleUrls: ['./list-anime.component.css']
 })
-
-export class DemoComponent implements OnInit {
+export class ListAnimeComponent implements OnInit {
 
   constructor() {
     this.nom = require('ouranilist-api');
@@ -26,5 +24,5 @@ export class DemoComponent implements OnInit {
     //anime = await this.nom.GETmediaWithoutToken(110789);
     console.log(anime);
   }
-}
 
+}
