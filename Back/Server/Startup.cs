@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Server.Repositories;
+using Server.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +30,12 @@ namespace Server
             {
                 builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
             }));
+
+            // REPOSITORIES
+            services.AddSingleton<IUsersRepository, UsersRepository>();
+
+            // SERVICES
+            services.AddSingleton<IUsersService, UsersService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
