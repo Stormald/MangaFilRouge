@@ -20,7 +20,7 @@
     "@angular/router": "~12.2.0",
     "bootstrap": "^5.1.3",
     "latest": "^0.2.0",
-    "nomanilist": "github:Rim-san/nomanilist",
+    "ouranilist-api": "^1.0.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
