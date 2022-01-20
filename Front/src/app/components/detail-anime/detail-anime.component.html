@@ -1,0 +1,74 @@
+<!-- Anime Section Begin --> 
+<section class="anime-details spad"> 
+    <div class="container"> 
+        <div class="anime__details__content"> 
+            <div class="row"> <div class="col-lg-3"> 
+                <div class="anime__details__pic set-bg" data-setbg="img/anime/details-pic.jpg"> <!--{{anime.data.Media.coverImage.medium}}--> 
+                    <div class="comment">
+                        <i class="fa fa-comments"></i> 11
+                    </div> 
+                    <div class="view">
+                        <i class="fa fa-eye"></i> 9141
+                    </div> 
+                </div> 
+            </div> 
+            <div class="col-lg-9"> 
+                <div class="anime__details__text"> 
+                    <div class="anime__details__title"> 
+                        <h3>{{dataAnime.data.Media.title.english}}</h3> 
+                        <span>{{dataAnime.data.Media.title.native}}</span> 
+                    </div> <div class="anime__details__rating"> 
+                        <div class="rating"> 
+                            <a href="#">
+                                <i class="fa fa-star"></i>
+                            </a> <a href="#">
+                                <i class="fa fa-star"></i>
+                            </a> 
+                            <a href="#">
+                                <i class="fa fa-star"></i>
+                            </a> <a href="#">
+                                <i class="fa fa-star"></i>
+                            </a> <a href="#">
+                                <i class="fa fa-star-half-o"></i>
+                            </a> 
+                        </div> 
+                        <span>1.029 Votes</span> 
+                    </div> <p>{{dataAnime.data.Media.description}}</p> 
+                    <div class="anime__details__widget"> 
+                        <div class="row"> 
+                            <div class="col-lg-6 col-md-6">
+                                 <ul>
+                                    <li><span>Type:</span> {{dataAnime.data.Media.type}}</li>
+                                    <li><span>Format:</span> {{dataAnime.data.Media.format}}</li>
+                                    <li><span>Studios:</span> <div *ngFor="let studio of dataAnime.data.Media.studios.nodes">{{studio.name}}</div></li>
+                                    <li><span>Status:</span> {{dataAnime.data.Media.status}}</li>
+                                    <li><span>Genre:</span> <div *ngFor="let genre of dataAnime.data.Media.genres">{{genre}}</div></li>
+                                </ul>
+                            </div> 
+                            <div class="col-lg-6 col-md-6"> 
+                                <ul> 
+                                    <li><span>Scores:</span> {{dataAnime.data.Media.averageScore}}</li> 
+                                    <li><span>Episodes:</span> {{dataAnime.data.Media.episodes}}</li> 
+                                    <li><span>Duration:</span> 24 min/ep</li> 
+                                    <li><span>Quality:</span> HD</li> 
+                                    <li><span>Views:</span> 131,541</li> 
+                                </ul> 
+                            </div> 
+                        </div> 
+                    </div> 
+                    <div class="anime__details__btn"> 
+                        <a href="#" class="follow-btn">
+                            <i class="fa fa-heart-o"></i> Follow
+                        </a> 
+                        <a href="#" class="watch-btn">
+                            <span>Watch Now</span> 
+                            <i class="fa fa-angle-right"></i>
+                        </a> 
+                    </div> 
+                </div> 
+            </div> 
+        </div> 
+    </div> 
+</div> 
+</section> 
+<!-- Anime Section End -->
