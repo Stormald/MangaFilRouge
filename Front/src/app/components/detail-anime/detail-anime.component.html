@@ -3,7 +3,7 @@
     <div class="container"> 
         <div class="anime__details__content"> 
             <div class="row"> <div class="col-lg-3"> 
-                <div class="anime__details__pic set-bg" data-setbg="img/anime/details-pic.jpg"> <!--{{anime.data.Media.coverImage.medium}}--> 
+                <div class="anime__details__pic set-bg" [ngStyle]="{ 'background-image': 'url(' + dataAnime.data.Media.coverImage.large + ')'}"> <!--{{anime.data.Media.coverImage.medium}}--> 
                     <div class="comment">
                         <i class="fa fa-comments"></i> 11
                     </div> 
@@ -33,7 +33,8 @@
                             </a> 
                         </div> 
                         <span>1.029 Votes</span> 
-                    </div> <p>{{dataAnime.data.Media.description}}</p> 
+                    </div> 
+                    <p>{{dataAnime.data.Media.description}}</p> 
                     <div class="anime__details__widget"> 
                         <div class="row"> 
                             <div class="col-lg-6 col-md-6">
@@ -50,7 +51,6 @@
                                     <li><span>Scores:</span> {{dataAnime.data.Media.averageScore}}</li> 
                                     <li><span>Episodes:</span> {{dataAnime.data.Media.episodes}}</li> 
                                     <li><span>Duration:</span> 24 min/ep</li> 
-                                    <li><span>Quality:</span> HD</li> 
                                     <li><span>Views:</span> 131,541</li> 
                                 </ul> 
                             </div> 
@@ -58,10 +58,10 @@
                     </div> 
                     <div class="anime__details__btn"> 
                         <a href="#" class="follow-btn">
-                            <i class="fa fa-heart-o"></i> Follow
+                            <i class="fa fa-heart-o"></i> Ajouter à ma Liste
                         </a> 
                         <a href="#" class="watch-btn">
-                            <span>Watch Now</span> 
+                            <span>COUCOU</span> 
                             <i class="fa fa-angle-right"></i>
                         </a> 
                     </div> 
