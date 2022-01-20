@@ -24,13 +24,13 @@ export class ListAnimeComponent implements OnInit {
     ///*
     let myFilter = {
 	    //isAdult: true,
-      sort: ["TRENDING_DESC"],
+      sort: ["TRENDING"],
       status: "RELEASING"
 	    //source_in: ["ORIGINAL", "LIGHT_NOVEL"]
     }; 
     //*/
     var anime = await this.nom.SEARCHmediasWithoutToken(null, "ANIME", 1, 15, myFilter);
-    //anime = await this.nom.GETmediaWithoutToken(110789);
+    //var anime = await this.nom.GETmediaWithoutToken(110789);
     console.log(anime);
   }
 }
