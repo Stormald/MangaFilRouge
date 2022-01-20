@@ -8,6 +8,11 @@ declare var require: any;
 })
 export class DetailAnimeComponent implements OnInit {
 
+  nom : any; 
+  dataAnime : any; 
+  studio: any;
+  AirSchedule = false;
+  isReadMore = true
   constructor() {
     this.nom = require('ouranilist-api'); 
   }
@@ -16,19 +21,33 @@ export class DetailAnimeComponent implements OnInit {
     this.getAnime(); 
   }
 
-  nom : any; 
-  dataAnime : any; 
-  studio: any; 
-    
   async getAnime()
   {
-    var anime = await this.nom.GETmediaWithoutToken((17)); 
+    var anime = await this.nom.GETmediaWithoutToken((21)); 
     console.log(anime); 
     this.dataAnime = anime; 
-    this.dataAnime.data.Media.studios.nodes.forEach((element: any) => {
+    // this.StringinfyParamStudio(this.dataAnime.Media.)
+  }
+  
+  showText() {
+     this.isReadMore = !this.isReadMore
+  }
+  
+  VerificationAirSchuduleNotEmpty(ObjAirSchedule: any)
+  {
+    if (ObjAirSchedule.length>0) {
+      this.AirSchedule = true;
+    } else {
+      this.AirSchedule = false;
+    }
+  }
+  
+  StringinfyParamStudio(ObjStudio: any)
+  {
+    ObjStudio.forEach((element: any) => {
       this.studio += element;
       console.log(this.studio);
     });
-  } 
+  }
 
 }
