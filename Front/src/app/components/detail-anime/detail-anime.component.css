@@ -225,6 +225,7 @@
 	border-radius: 0px 0px 50px 50px ;
 }
 .read-more.content-read-more:hover, .more-link:hover, .read-more:hover {
-	color: #000;
+	color: #1d1e39;
+    background-color: #d40e1b;
 	max-width: 100%;
 }
