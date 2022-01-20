@@ -34,7 +34,7 @@
                         </div> 
                         <span>1.029 Votes</span> 
                     </div> 
-                    <p>{{dataAnime.data.Media.description}}</p> 
+                    <p [innerHTML]="dataAnime.data.Media.description" ></p> 
                     <div class="anime__details__widget"> 
                         <div class="row"> 
                             <div class="col-lg-6 col-md-6">
@@ -59,10 +59,6 @@
                     <div class="anime__details__btn"> 
                         <a href="#" class="follow-btn">
                             <i class="fa fa-heart-o"></i> Ajouter à ma Liste
-                        </a> 
-                        <a href="#" class="watch-btn">
-                            <span>COUCOU</span> 
-                            <i class="fa fa-angle-right"></i>
                         </a> 
                     </div> 
                 </div> 
