@@ -13,6 +13,12 @@ export class DetailAnimeComponent implements OnInit {
   studio: any;
   AirSchedule = false;
   isReadMore = true
+  timenum : any;
+  jour : any;
+  heure :any;
+  min :any;
+  Reste : any;
+
   constructor() {
     this.nom = require('ouranilist-api'); 
   }
@@ -23,10 +29,32 @@ export class DetailAnimeComponent implements OnInit {
 
   async getAnime()
   {
-    var anime = await this.nom.GETmediaWithoutToken((21)); 
-    console.log(anime); 
-    this.dataAnime = anime; 
-    // this.StringinfyParamStudio(this.dataAnime.Media.)
+    var anime = await this.nom.GETmediaWithoutToken((21))
+    .then((dataR: any) => {
+        this.timenum = dataR.data.Media.nextAiringEpisode.timeUntilAiring;
+        console.log(this.timenum);
+        this.convertirSecEnJourHeureMin();
+        console.log(dataR); 
+        this.dataAnime = dataR; 
+      }
+    ); 
+    
+    
+  }
+
+  convertirSecEnJourHeureMin()
+  {
+    
+    this.jour = Math.floor(this.timenum/86400);
+    console.log(this.jour);
+    this.Reste = (this.timenum%86400);
+    console.log(this.Reste);
+    this.heure = Math.floor(this.Reste/3600);
+    console.log(this.heure);
+    this.Reste = (this.Reste%3600);
+    console.log(this.Reste);
+    this.min = Math.floor(this.Reste/60);
+    console.log(this.min);
   }
   
   showText() {
