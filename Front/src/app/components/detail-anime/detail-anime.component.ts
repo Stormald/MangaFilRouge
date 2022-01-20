@@ -18,13 +18,17 @@ export class DetailAnimeComponent implements OnInit {
 
   nom : any; 
   dataAnime : any; 
-  studio!: string; 
+  studio: any; 
     
   async getAnime()
   {
     var anime = await this.nom.GETmediaWithoutToken((17)); 
     console.log(anime); 
     this.dataAnime = anime; 
+    this.dataAnime.data.Media.studios.nodes.forEach((element: any) => {
+      this.studio += element;
+      console.log(this.studio);
+    });
   } 
 
 }

@@ -156,7 +156,6 @@ ol {
     display: inline-block;
     padding: 12px 30px;
 }
-
 #preloder {
     position: fixed;
     width: 100%;
@@ -166,7 +165,6 @@ ol {
     z-index: 999999;
     background: #000;
 }
-
 .loader {
     width: 40px;
     height: 40px;
@@ -179,7 +177,6 @@ ol {
     animation: loader 0.8s linear infinite;
     -webkit-animation: loader 0.8s linear infinite;
 }
-
 @keyframes loader {
     0% {
         -webkit-transform: rotate(0deg);
@@ -227,7 +224,6 @@ ol {
     right: 0;
     z-index: 999;
 }
-
 .spacial-controls .search-switch {
     display: block;
     height: 100%;
@@ -236,7 +232,6 @@ ol {
     text-align: center;
     cursor: pointer;
 }
-
 .search-model {
     display: none;
     position: fixed;
@@ -260,7 +255,6 @@ ol {
     background: 0 0;
     color: #999;
 }
-
 .search-close-switch {
     position: absolute;
     width: 50px;
