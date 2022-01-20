@@ -5,6 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 # Infos API Anilist Wrapper ouranilist-api : 1.0.15
 
  - await nom.SEARCHmediasWithoutToken("search" : string, "MEDIATYPE" : string, page : int, perPage : int, filters : [Key]:Value)
+
 ex : 
 
 let myFilter = {
