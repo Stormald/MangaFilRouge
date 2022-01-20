@@ -24,7 +24,7 @@ export class ListeComponent implements OnInit {
 
   async getAnime(){
     
-    var anime = await this.nom.SEARCHmediasWithoutToken("One Piece", "ANIME", 1, 25);
+    var anime = await this.nom.SEARCHmediasWithoutToken(null, "ANIME", 1, 30);
     this.liste = anime.data.Page.media;
     console.log(anime);
     console.log(this.liste);
