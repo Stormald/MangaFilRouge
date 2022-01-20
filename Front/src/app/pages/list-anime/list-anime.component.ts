@@ -24,7 +24,7 @@ export class ListAnimeComponent implements OnInit {
     ///*
     let myFilter = {
 	    //isAdult: true,
-      sort: ["TRENDING"],
+      sort: ["TRENDING_DESC"],
       status: "RELEASING"
 	    //source_in: ["ORIGINAL", "LIGHT_NOVEL"]
     }; 
