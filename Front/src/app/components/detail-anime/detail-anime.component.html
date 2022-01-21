@@ -34,6 +34,7 @@
                                     <li *ngIf="dataAnime?.data.Media.status"><span>Status:</span> {{dataAnime?.data.Media.status}}</li>
                                     <li *ngIf="dataAnime?.data.Media.isAdult"><span>Adult:</span> {{dataAnime?.data.Media.isAdult}}</li>
                                     <li *ngIf="dataAnime?.data.Media.isLicensed"><span>Licensed:</span> {{dataAnime?.data.Media.isLicensed ? 'True': 'False'}} </li>
+                                    <li *ngIf="dataAnime?.data.Media.startDate.year"><span>Start Date:</span> {{dataAnime?.data.Media.startDate.day}}/{{dataAnime?.data.Media.startDate.month}}/{{dataAnime?.data.Media.startDate.year}}</li>
                                     <li><span>Genre:</span> <div *ngFor="let genre of dataAnime?.data.Media.genres">{{genre}}</div></li>
                                 </ul>
                             </div> 
@@ -43,6 +44,7 @@
                                     <li *ngIf="dataAnime?.data.Media.episodes"><span>Episodes:</span> {{dataAnime?.data.Media.episodes}}</li> 
                                     <li *ngIf="dataAnime?.data.Media.duration"><span>Duration:</span> {{dataAnime?.data.Media.duration}}</li> 
                                     <li *ngIf="dataAnime?.data.Media.seasonInt"><span>Saison:</span> {{dataAnime?.data.Media.season}} {{dataAnime?.data.Media.seasonYear}}</li> 
+                                    <li *ngIf="dataAnime?.data.Media.endDate"><span>End Date:</span> {{dataAnime?.data.Media.endtDate.day}}/{{dataAnime?.data.Media.endDate.month}}/{{dataAnime?.data.Media.endDate.year}}</li>
                                     <li><span>Studios:</span> <div *ngFor="let studio of dataAnime?.data.Media.studios.nodes">{{studio.name}}</div></li>
                                 </ul> 
                             </div> 
