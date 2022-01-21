@@ -30,6 +30,7 @@ export class DetailAnimeComponent implements OnInit {
   ngOnInit(): void {
     this.getAnime(this.id); 
   }
+  
 
   async getAnime(id : number)
   {
