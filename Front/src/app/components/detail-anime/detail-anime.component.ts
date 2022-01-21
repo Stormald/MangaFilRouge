@@ -11,16 +11,15 @@ declare var require: any;
 export class DetailAnimeComponent implements OnInit {
 
   id : number;
-  nom : any; 
-  dataAnime : any; 
+  nom: { GETmediaWithoutToken: (arg0: number) => Promise<any>; } ; 
+  dataAnime: any ; 
   studio: any;
-  AirSchedule = false;
   isReadMore = true
-  timenum : any;
-  jour : any;
-  heure :any;
-  min :any;
-  Reste : any;
+  timeNum: number;
+  jour: number;
+  heure: number;
+  min: number;
+  Reste: number;
 
   constructor(private route : ActivatedRoute) {
     this.nom = require('ouranilist-api'); 
@@ -31,43 +30,50 @@ export class DetailAnimeComponent implements OnInit {
     this.getAnime(this.id); 
   }
 
+  /**
+   * @description Get anime object by his id
+   * @param id id d'un anime 
+   */
   async getAnime(id : number)
   {
     var anime = await this.nom.GETmediaWithoutToken(id)
     .then((dataR: any) => {
-        this.timenum = dataR.data.Media.nextAiringEpisode.timeUntilAiring;
-        console.log(this.timenum);
-        this.convertirSecEnJourHeureMin();
-        console.log(dataR); 
-        this.dataAnime = dataR;
+      this.TransformData(dataR)
       }
     ); 
   }
 
-  convertirSecEnJourHeureMin()
+  /**
+   * @description affectation et transformation de certaine data d'anime
+   * @param dataIn 
+   */
+  TransformData(dataIn){
+    this.timeNum = dataIn.data.Media.nextAiringEpisode.timeUntilAiring;
+    this.convertirSecEnJourHeureMin(this.timeNum );
+    this.dataAnime = dataIn;
+  }
+
+  /**
+   * @description convertie un nombre de seconde en jour heure minute
+   * @param Time temps en seconde
+   */
+  convertirSecEnJourHeureMin(Time: number)
   {
-    this.jour = Math.floor(this.timenum/86400);
-    console.log(this.jour);
-    this.Reste = (this.timenum%86400);
-    console.log(this.Reste);
+    this.jour = Math.floor(Time/86400);
+    this.Reste = (Time%86400);
+    
     this.heure = Math.floor(this.Reste/3600);
-    console.log(this.heure);
     this.Reste = (this.Reste%3600);
-    console.log(this.Reste);
+    
     this.min = Math.floor(this.Reste/60);
-    console.log(this.min);
+    
   }
   
+  /**
+   * @description Change la valeur boolenne de isReadMore
+   */
   showText() {
      this.isReadMore = !this.isReadMore
   }
   
-  VerificationAirSchuduleNotEmpty(ObjAirSchedule: any)
-  {
-    if (ObjAirSchedule.length>0) {
-      this.AirSchedule = true;
-    } else {
-      this.AirSchedule = false;
-    }
-  }
 }
