@@ -276,3 +276,16 @@
 .link_to_detail{
     text-align:  center;
 }
+
+.en-cours{
+    position: absolute;
+    left: 205px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: #e53637;
+    border-radius: 50px;
+    border: solid 2px #651415;
+    text-align: center;
+}
