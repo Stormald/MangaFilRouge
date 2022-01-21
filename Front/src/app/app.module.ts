@@ -9,6 +9,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { ListeComponent } from './components/liste/liste.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { DetailAnimeComponent } from './components/detail-anime/detail-anime.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    ListeComponent
+    ListeComponent,
+    DetailAnimeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,105 @@
+<!-- Anime Section Begin --> 
+<section class="anime-details spad"> 
+    <div class="container"> 
+        <div class="anime__details__content"> 
+            <div class="row"> <div class="col-lg-3"> 
+                <div class="anime__details__pic set-bg" [ngStyle]="{ 'background-image': 'url(' + dataAnime.data.Media.coverImage.large + ')'}"> <!--{{anime.data.Media.coverImage.medium}}--> 
+                    <div class="comment">
+                        <i class="fa fa-comments"></i>Next Episode N°{{dataAnime.data.Media.nextAiringEpisode.episode}} in {{jour}} days {{heure}}h {{min}}m
+                    </div> 
+                </div> 
+            </div> 
+            <div class="col-lg-9"> 
+                <div class="anime__details__text"> 
+                    <div class="anime__details__title"> 
+                        <h3>{{dataAnime.data.Media.title.english}}</h3> 
+                        <span>{{dataAnime.data.Media.title.native}}</span> 
+                    </div> <div class="anime__details__rating">
+                    </div> 
+                    <div [ngClass]="{'limitTextHeight': isReadMore}">
+                        <p [innerHTML]="dataAnime.data.Media.description" ></p> 
+                    </div>
+                    <div >
+                        <a class="read-more.content-read-more more-link read-more read-more.content-read-more:hover more-link:hover read-more:hover"  type="button" (click)="showText()" >
+                           {{ isReadMore ? 'Read More': 'Read Less' }}
+                        </a>
+                    </div>
+                    
+                    <div class="anime__details__widget"> 
+                        <div class="row"> 
+                            <div class="col-lg-6 col-md-6">
+                                 <ul>
+                                    <li *ngIf="dataAnime.data.Media.type"><span>Type:</span> {{dataAnime.data.Media.type}}</li>
+                                    <li *ngIf="dataAnime.data.Media.format"><span>Format:</span> {{dataAnime.data.Media.format}}</li>
+                                    <li *ngIf="dataAnime.data.Media.status"><span>Status:</span> {{dataAnime.data.Media.status}}</li>
+                                    <li *ngIf="dataAnime.data.Media.isAdult"><span>Adult:</span> {{dataAnime.data.Media.isAdult}}</li>
+                                    <li *ngIf="dataAnime.data.Media.isLicensed"><span>licensed:</span> {{dataAnime.data.Media.isLicensed}}</li>
+                                    <li><span>Genre:</span> <div *ngFor="let genre of dataAnime.data.Media.genres">{{genre}}</div></li>
+                                </ul>
+                            </div> 
+                            <div class="col-lg-6 col-md-6"> 
+                                <ul> 
+                                    <li *ngIf="dataAnime.data.Media.averageScore"><span>Scores:</span> {{dataAnime.data.Media.averageScore}}</li> 
+                                    <li *ngIf="dataAnime.data.Media.episodes"><span>Episodes:</span> {{dataAnime.data.Media.episodes}}</li> 
+                                    <li *ngIf="dataAnime.data.Media.duration"><span>Duration:</span> {{dataAnime.data.Media.duration}}</li> 
+                                    <li *ngIf="dataAnime.data.Media.seasonInt"><span>Saison:</span> {{dataAnime.data.Media.seasonInt}}</li> 
+                                    <li><span>Studios:</span> <div *ngFor="let studio of dataAnime.data.Media.studios.nodes">{{studio.name}}</div></li>
+                                </ul> 
+                            </div> 
+                            <div>
+                                
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- Review Section Begin --> 
+                            <div class="col-lg-8 col-md-8">
+                                <div class="anime__details__review">
+                                    <div class="section-title">
+                                        <h5>Reviews</h5>
+                                    </div>
+                                    <div *ngFor="let review of dataAnime.data.Media.reviews.edges" class="anime__review__item">
+                                        <div class="anime__review__item__pic">
+                                            <img src="img/anime/review-1.jpg" alt="">
+                                        </div>
+                                        <div class="anime__review__item__text">
+                                            <h6><span>Rating {{review.node.rating}} - Score {{review.node.score}} </span></h6>
+                                            <p>{{review.node.summary}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="anime__details__form">
+                                    <div class="section-title">
+                                        <h5>Your Comment</h5>
+                                    </div>
+                                    <form action="#">
+                                        <textarea placeholder="Your Comment"></textarea>
+                                        <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- Review Section END -->
+                            <!-- Recommandation Section Begin --> 
+                            <div class="col-lg-4 col-md-4">
+                                <div class="anime__details__sidebar">
+                                    <div class="section-title">
+                                        <h5>you might like...</h5>
+                                    </div>
+                                    <div *ngFor="let recommendations of dataAnime.data.Media.recommendations.nodes" class="product__sidebar__view__item set-bg" [ngStyle]="{ 'background-image': 'url(' + recommendations.mediaRecommendation.coverImage.large + ')'}">
+                                        <h5><a href="#">{{recommendations.mediaRecommendation.title.english}}</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="anime__details__btn"> 
+                        <a href="#" class="follow-btn">
+                            <i class="fa fa-heart-o"></i> Add to List
+                        </a> 
+                    </div> 
+                </div> 
+            </div> 
+        </div> 
+    </div> 
+</div> 
+</section> 
+<!-- Anime Section End -->
