@@ -14,6 +14,7 @@ export class ListeComponent implements OnInit {
   //anime : any;
   page : number;
   lastPage : number;
+  myFilter : any; 
   //cpt : number;
 
   constructor() {
@@ -27,7 +28,12 @@ export class ListeComponent implements OnInit {
   }
 
   async getAnime(){
-    await this.nom.SEARCHmediasWithoutToken("One Piece", "ANIME", 1, 12).then(data =>{
+    this.myFilter = { 
+      sort: ["TRENDING_DESC"], 
+      status: "RELEASING",
+      isAdult: false
+    };
+    await this.nom.SEARCHmediasWithoutToken(null, "ANIME", 1, 12, this.myFilter).then(data =>{
       this.liste = data.data.Page.media;
       this.page = data.data.Page.pageInfo.currentPage;
       this.lastPage = data.data.Page.pageInfo.lastPage;
@@ -52,7 +58,7 @@ export class ListeComponent implements OnInit {
     }
     else
     this.page++;
-    await this.nom.SEARCHmediasWithoutToken("One Piece", "ANIME", this.page, 6).then(data => {
+    await this.nom.SEARCHmediasWithoutToken(null, "ANIME", this.page, 6, this.myFilter).then(data => {
       this.liste = this.liste.concat(data.data.Page.media); 
       this.lastPage = data.data.Page.pageInfo.lastPage;
       console.log(this.liste);
