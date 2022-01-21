@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
+import { ActivatedRoute, Router } from '@angular/router';
 declare var require: any; 
 
 @Component({
@@ -8,6 +10,7 @@ declare var require: any;
 })
 export class DetailAnimeComponent implements OnInit {
 
+  id : number;
   nom : any; 
   dataAnime : any; 
   studio: any;
@@ -19,17 +22,18 @@ export class DetailAnimeComponent implements OnInit {
   min :any;
   Reste : any;
 
-  constructor() {
+  constructor(private route : ActivatedRoute) {
     this.nom = require('ouranilist-api'); 
+    this.id = route.snapshot.params.id;
   }
 
   ngOnInit(): void {
-    this.getAnime(); 
+    this.getAnime(this.id); 
   }
 
-  async getAnime()
+  async getAnime(id : number)
   {
-    var anime = await this.nom.GETmediaWithoutToken((21))
+    var anime = await this.nom.GETmediaWithoutToken(id)
     .then((dataR: any) => {
         this.timenum = dataR.data.Media.nextAiringEpisode.timeUntilAiring;
         console.log(this.timenum);

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 declare var require: any;
 // import Anime from 'ouranilist-api';
 
@@ -17,10 +19,13 @@ export class ListeComponent implements OnInit {
   myFilter : any; 
   //cpt : number;
 
-  constructor() {
+  constructor(private router : Router) {
     //this.cpt = 0;
     this.nom = require('ouranilist-api');
     this.liste = [];
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    }
   }
 
   ngOnInit(): void {
@@ -63,5 +68,9 @@ export class ListeComponent implements OnInit {
       this.lastPage = data.data.Page.pageInfo.lastPage;
       console.log(this.liste);
     }); 
+  }
+
+  goToDetailAnime(id : number){
+    this.router.navigate(['/animes', id]);
   }
 }
