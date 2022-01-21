@@ -27,7 +27,7 @@ export class ListeComponent implements OnInit {
   }
 
   async getAnime(){
-    await this.nom.SEARCHmediasWithoutToken("One Piece", "ANIME", 1, 10).then(data =>{
+    await this.nom.SEARCHmediasWithoutToken("One Piece", "ANIME", 1, 12).then(data =>{
       this.liste = data.data.Page.media;
       this.page = data.data.Page.pageInfo.currentPage;
       this.lastPage = data.data.Page.pageInfo.lastPage;
@@ -47,8 +47,12 @@ export class ListeComponent implements OnInit {
   }
 
   async appendItems(){
+    if(this.page == 1){
+      this.page = 3;
+    }
+    else
     this.page++;
-    await this.nom.SEARCHmediasWithoutToken("One Piece", "ANIME", this.page, 10).then(data => {
+    await this.nom.SEARCHmediasWithoutToken("One Piece", "ANIME", this.page, 6).then(data => {
       this.liste = this.liste.concat(data.data.Page.media); 
       this.lastPage = data.data.Page.pageInfo.lastPage;
       console.log(this.liste);
