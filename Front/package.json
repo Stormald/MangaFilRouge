@@ -20,8 +20,12 @@
     "@angular/router": "~12.2.0",
     "bootstrap": "^5.1.3",
     "latest": "^0.2.0",
+<<<<<<< HEAD
     "ngx-infinite-scroll": "^10.0.1",
     "ouranilist-api": "^1.0.12",
+=======
+    "ouranilist-api": "^1.0.15",
+>>>>>>> master
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
