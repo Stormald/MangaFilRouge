@@ -3,16 +3,26 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ListAnimeComponent } from './pages/list-anime/list-anime.component';
+import { DemoComponent } from './components/demo/demo.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './components/home/home.component';
+import { ListeComponent } from './components/liste/liste.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListAnimeComponent
+    DemoComponent,
+    HeaderComponent,
+    FooterComponent,
+    HomeComponent,
+    ListeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    InfiniteScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]
