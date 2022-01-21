@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DetailAnimeComponent } from './components/detail-anime/detail-anime.component';
 import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
-  {path:'', component: HomeComponent}
+  {path:'', component: HomeComponent},
+  {path:"animes/:id", component: DetailAnimeComponent}
 ];
 
 @NgModule({

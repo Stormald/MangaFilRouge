@@ -24,7 +24,8 @@ import { DetailAnimeComponent } from './components/detail-anime/detail-anime.com
   imports: [
     BrowserModule,
     AppRoutingModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
