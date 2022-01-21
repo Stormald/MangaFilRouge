@@ -49,7 +49,47 @@
                             <div>
                                 
                             </div>
-                        </div> 
+                        </div>
+                        <div class="row">
+                            <!-- Review Section Begin --> 
+                            <div class="col-lg-8 col-md-8">
+                                <div class="anime__details__review">
+                                    <div class="section-title">
+                                        <h5>Reviews</h5>
+                                    </div>
+                                    <div *ngFor="let review of dataAnime.data.Media.reviews.edges" class="anime__review__item">
+                                        <div class="anime__review__item__pic">
+                                            <img src="img/anime/review-1.jpg" alt="">
+                                        </div>
+                                        <div class="anime__review__item__text">
+                                            <h6><span>Rating {{review.node.rating}} - Score {{review.node.score}} </span></h6>
+                                            <p>{{review.node.summary}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="anime__details__form">
+                                    <div class="section-title">
+                                        <h5>Your Comment</h5>
+                                    </div>
+                                    <form action="#">
+                                        <textarea placeholder="Your Comment"></textarea>
+                                        <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- Review Section END -->
+                            <!-- Recommandation Section Begin --> 
+                            <div class="col-lg-4 col-md-4">
+                                <div class="anime__details__sidebar">
+                                    <div class="section-title">
+                                        <h5>you might like...</h5>
+                                    </div>
+                                    <div *ngFor="let recommendations of dataAnime.data.Media.recommendations.nodes" class="product__sidebar__view__item set-bg" [ngStyle]="{ 'background-image': 'url(' + recommendations.mediaRecommendation.coverImage.large + ')'}">
+                                        <h5><a href="#">{{recommendations.mediaRecommendation.title.english}}</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div> 
                     <div class="anime__details__btn"> 
                         <a href="#" class="follow-btn">

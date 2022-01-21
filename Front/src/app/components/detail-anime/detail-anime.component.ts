@@ -35,16 +35,13 @@ export class DetailAnimeComponent implements OnInit {
         console.log(this.timenum);
         this.convertirSecEnJourHeureMin();
         console.log(dataR); 
-        this.dataAnime = dataR; 
+        this.dataAnime = dataR;
       }
     ); 
-    
-    
   }
 
   convertirSecEnJourHeureMin()
   {
-    
     this.jour = Math.floor(this.timenum/86400);
     console.log(this.jour);
     this.Reste = (this.timenum%86400);
@@ -69,13 +66,4 @@ export class DetailAnimeComponent implements OnInit {
       this.AirSchedule = false;
     }
   }
-  
-  StringinfyParamStudio(ObjStudio: any)
-  {
-    ObjStudio.forEach((element: any) => {
-      this.studio += element;
-      console.log(this.studio);
-    });
-  }
-
 }
