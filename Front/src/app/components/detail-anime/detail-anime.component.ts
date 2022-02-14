@@ -15,6 +15,7 @@ export class DetailAnimeComponent implements OnInit {
   dataAnime: any ; 
   studio: any;
   isReadMore = true
+  ShowReadMore = false
   timeNum: number;
   jour: number;
   heure: number;
@@ -27,7 +28,7 @@ export class DetailAnimeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAnime(this.id); 
+    this.getAnime(this.id);
   }
   
 
@@ -39,16 +40,17 @@ export class DetailAnimeComponent implements OnInit {
   {
     var anime = await this.nom.GETmediaWithoutToken(id)
     .then((dataR: any) => {
-      this.TransformData(dataR)
+      this.TransformNextAiringData(dataR);
+      this.ReadMoreControl(dataR.data.Media.description);
       }
     ); 
   }
 
   /**
-   * @description affectation et transformation de certaine data d'anime
+   * @description affectation et transformation du next airing data d'anime
    * @param dataIn 
    */
-  TransformData(dataIn){
+  TransformNextAiringData(dataIn){
     this.timeNum = dataIn.data.Media.nextAiringEpisode.timeUntilAiring;
     this.convertirSecEnJourHeureMin(this.timeNum );
     this.dataAnime = dataIn;
@@ -68,6 +70,22 @@ export class DetailAnimeComponent implements OnInit {
     
     this.min = Math.floor(this.Reste/60);
     
+  }
+  /**
+   * @description Verifie si la taille du texte de la description d'un anime >500 pour afficher ou nom le btn read more
+   * 
+   * @param data 
+   * 
+   * @example animeid 132405
+   */
+  ReadMoreControl(data){
+    console.log(data);
+    console.log(data.length);
+    if (data.length > 500) {
+      this.ShowReadMore = true;
+    } else {
+      this.ShowReadMore = false;
+    }
   }
   
   /**
