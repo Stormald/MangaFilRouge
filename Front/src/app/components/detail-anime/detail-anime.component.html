@@ -24,7 +24,7 @@
                         <p [innerHTML]="dataAnime?.data.Media.description" ></p> 
                     </div>
                     <div >
-                        <a class="read-more.content-read-more more-link read-more read-more.content-read-more:hover more-link:hover read-more:hover"  type="button" (click)="showText()" >
+                        <a *ngIf="ShowReadMore" class="read-more.content-read-more more-link read-more read-more.content-read-more:hover more-link:hover read-more:hover"  type="button" (click)="showText()" >
                            {{ isReadMore ? 'Read More': 'Read Less' }}
                         </a>
                     </div>

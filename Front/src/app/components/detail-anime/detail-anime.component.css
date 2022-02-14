@@ -199,7 +199,7 @@
     border-radius: 2px;
 }
 .limitTextHeight {
-    height: 300px;
+    height: 250px;
     overflow: hidden;
 }
 #read-more {
@@ -220,12 +220,14 @@
 	text-decoration: none;
 	font-weight: bold;
 	transition: 0.5s max-width ease;
-	background-color: #a0000a;
+	background-color: #e53637;
 	max-width: 100%;
 	border-radius: 0px 0px 50px 50px ;
+    
 }
 .read-more.content-read-more:hover, .more-link:hover, .read-more:hover {
-	color: #1d1e39;
-    background-color: #d40e1b;
+    color: white;
+	text-decoration: underline;
+    background-color: #f44336;
 	max-width: 100%;
 }
