@@ -81,8 +81,6 @@ export class DetailAnimeComponent implements OnInit {
    * 
    */
   ReadMoreControl(data){
-    console.log(data);
-    console.log(data.length);
     if (data.length > 650) {
       this.ShowReadMore = true;
     } else {
