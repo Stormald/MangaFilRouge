@@ -38,7 +38,6 @@ export class DetailAnimeComponent implements OnInit {
    */
   async getAnime(id : number)
   {
-    console.log("Hey : "+id)
     var anime = await this.nom.GETmediaWithoutToken(id)
     .then((dataR: any) => {
       this.TransformNextAiringData(dataR);
@@ -52,7 +51,6 @@ export class DetailAnimeComponent implements OnInit {
    * @param dataIn 
    */
    TransformNextAiringData(dataIn){
-    console.log(dataIn);
     if(dataIn.data.Media.nextAiringEpisode != null){
       this.timeNum = dataIn.data.Media.nextAiringEpisode.timeUntilAiring;
       this.convertirSecEnJourHeureMin(this.timeNum);
