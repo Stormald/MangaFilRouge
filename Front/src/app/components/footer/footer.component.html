@@ -1,8 +1,10 @@
 <!-- Footer Section Begin -->
 <footer class="footer">
-    <div class="page-up">
-        <a href="" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
-    </div>
+    <a class="arrow-up page-up" (click)="scrollTo('header')">
+        <span class="left-arm"></span>
+        <span class="right-arm"></span>
+        <span class="arrow-slide"></span>
+    </a>
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
@@ -26,7 +28,8 @@
                     Copyright &copy;
                     <script>
                         document.write(new Date().getFullYear());
-                    </script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    </script> All rights reserved | This template is made with <i class="fa fa-heart"
+                        aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </p>
 
