@@ -72,16 +72,18 @@ export class DetailAnimeComponent implements OnInit {
     
   }
   /**
-   * @description Verifie si la taille du texte de la description d'un anime >500 pour afficher ou nom le btn read more
+   * @description Verifie si la taille du texte de la description d'un anime >650 pour afficher ou nom le btn read more
+   * Short description animeid 132405
    * 
    * @param data 
    * 
-   * @example animeid 132405
+   * @example this.ReadMoreControl(String)
+   * 
    */
   ReadMoreControl(data){
     console.log(data);
     console.log(data.length);
-    if (data.length > 500) {
+    if (data.length > 650) {
       this.ShowReadMore = true;
     } else {
       this.ShowReadMore = false;

@@ -199,7 +199,7 @@
     border-radius: 2px;
 }
 .limitTextHeight {
-    height: 300px;
+    height: 250px;
     overflow: hidden;
 }
 #read-more {
