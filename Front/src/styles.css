@@ -105,9 +105,12 @@ ol {
 }
 
 .set-bg {
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: top center;
+    height:100%;
+    left:0;
+    position: absolute;
+    top:0;
+    object-fit: cover;
+    width:100%;
 }
 
 .spad {
