@@ -4,8 +4,8 @@
         <div class="anime__details__content"> 
             <div class="row"> <div class="col-lg-3"> 
                 <div class="anime__details__pic set-bg" [ngStyle]="{ 'background-image': 'url(' + dataAnime?.data.Media.coverImage.large + ')'}"> <!--{{anime.data.Media.coverImage.medium}}--> 
-                    <div class="comment">
-                        <i class="fa fa-comments"></i>Next Episode N°{{dataAnime?.data.Media.nextAiringEpisode.episode}} in {{jour}} days {{heure}}h {{min}}m
+                    <div *ngIf="dataAnime?.data.Media.nextAiringEpisode" class="comment">
+                        <i class="fa fa-calendar"></i> Next Episode N°{{dataAnime?.data.Media.nextAiringEpisode.episode}} in {{jour}} days {{heure}}h {{min}}m
                     </div> 
                 </div> 
             </div> 
@@ -47,7 +47,7 @@
                                     <li *ngIf="dataAnime?.data.Media.episodes"><span>Episodes:</span> {{dataAnime?.data.Media.episodes}}</li> 
                                     <li *ngIf="dataAnime?.data.Media.duration"><span>Duration:</span> {{dataAnime?.data.Media.duration}}</li> 
                                     <li *ngIf="dataAnime?.data.Media.seasonInt"><span>Saison:</span> {{dataAnime?.data.Media.season}} {{dataAnime?.data.Media.seasonYear}}</li> 
-                                    <li *ngIf="dataAnime?.data.Media.endDate.year"><span>End Date:</span> {{dataAnime?.data.Media.endtDate.day}}/{{dataAnime?.data.Media.endDate.month}}/{{dataAnime?.data.Media.endDate.year}}</li>
+                                    <li *ngIf="dataAnime?.data.Media.endDate.year"><span>End Date:</span> {{dataAnime?.data.Media.endtDate?.day}}/{{dataAnime?.data.Media.endDate?.month}}/{{dataAnime?.data.Media.endDate?.year}}</li>
                                     <li><span>Studios:</span> <div *ngFor="let studio of dataAnime?.data.Media.studios.nodes">{{studio.name}}</div></li>
                                 </ul> 
                             </div> 

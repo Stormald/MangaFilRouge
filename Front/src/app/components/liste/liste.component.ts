@@ -40,9 +40,9 @@ export class ListeComponent implements OnInit {
       //status: "RELEASING",
       isAdult: false
     };
-    this.searchName="One Piece";
+    this.searchName="";
     this.mediaType="ANIME";
-    await this.nom.SEARCHmediasWithoutToken("One Piece", "ANIME", 1, 12, this.myFilter).then(data =>{
+    await this.nom.SEARCHmediasWithoutToken(this.searchName, this.mediaType, 1, 12, this.myFilter).then(data =>{
       this.liste = data.data.Page.media;
       this.page = data.data.Page.pageInfo.currentPage;
       this.lastPage = data.data.Page.pageInfo.lastPage;
@@ -75,6 +75,7 @@ export class ListeComponent implements OnInit {
   }
 
   goToDetailAnime(id : number){
+    console.log(id);
     this.router.navigate(['/animes', id]);
   }
 }
