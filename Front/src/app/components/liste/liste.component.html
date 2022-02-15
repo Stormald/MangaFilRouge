@@ -8,7 +8,7 @@
                 <a (click)="goToDetailAnime(anime.id)">
                     <img class="set-bg" src="{{anime.coverImage.extraLarge}}">
                 </a>
-                <div *ngIf="anime?.nextAiringEpisode" class="fa en-cours"></div>
+                <div matTooltip="{{ TransformTimeStamp(anime?.nextAiringEpisode.airingAt) }}" *ngIf="anime?.nextAiringEpisode" class="fa en-cours"></div>
                 <div class="comment"><i class="fa fa-comments"></i> 11</div>
                 <div class="view"><i class="fa fa-eye"></i> 9141</div>
             </div>

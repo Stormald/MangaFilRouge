@@ -1,4 +1,8 @@
+
+import { newArray } from '@angular/compiler/src/util';
+
 import { isNull } from '@angular/compiler/src/output/output_ast';
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 
@@ -15,11 +19,13 @@ export class ListeComponent implements OnInit {
   nom: any;
   liste: Array<any>;
   //anime : any;
+
   page: number;
   searchName: string;
   lastPage: number;
   myFilter: any;
   mediaType: string;
+
   //cpt : number;
 
   constructor(private router: Router, private route: ActivatedRoute) {
@@ -56,6 +62,12 @@ export class ListeComponent implements OnInit {
       this.liste = data.data.Page.media;
       this.page = data.data.Page.pageInfo.currentPage;
       this.lastPage = data.data.Page.pageInfo.lastPage;
+      console.log(data);
+      // data.data.Page.media.forEach(element => {
+      //   console.log(element);
+      //   element = element.push(this.TransformTimeStamp(element.nextAiringEpisode.airingAt));
+      // });
+      // console.log(data);
     }
     );
 
@@ -88,4 +100,16 @@ export class ListeComponent implements OnInit {
     //console.log(id);
     this.router.navigate(['/animes', id]);
   }
+
+  /**
+   * @description Convertie un Unix timestamp en string
+   * @param timeStamp 
+   * @returns String
+   */
+   TransformTimeStamp(timeStamp): String{
+    var DateTemp = new Date(timeStamp*1000);
+    var DateTMSTP = DateTemp.toDateString() + ", " + DateTemp.toLocaleTimeString();
+    console.log(DateTMSTP);
+   return DateTMSTP;
+ }
 }
