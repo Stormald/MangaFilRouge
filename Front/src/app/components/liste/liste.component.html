@@ -1,12 +1,12 @@
 <div class="row" infinite-scroll (scrolled)="onScrollDown($event)">
-    <h3 *ngIf="searchName != null">
+    <h3 *ngIf="searchName != null && searchName != ''">
         Results for '{{searchName}}'
     </h3>
     <div *ngFor="let anime of liste" class="col-lg-4 col-md-6 col-sm-6">
         <div class="product__item">
             <div class="product__item__pic">
                 <a (click)="goToDetailAnime(anime.id)">
-                    <img class="set-bg" src="{{anime.coverImage.extraLarge}}">
+                    <img class="set-bg" src="{{anime?.coverImage.extraLarge}}">
                 </a>
                 <div matTooltip="{{ TransformTimeStamp(anime?.nextAiringEpisode.airingAt) }}" *ngIf="anime?.nextAiringEpisode" class="fa en-cours"></div>
                 <div class="comment"><i class="fa fa-comments"></i> 11</div>
