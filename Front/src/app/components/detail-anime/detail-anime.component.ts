@@ -21,6 +21,7 @@ export class DetailAnimeComponent implements OnInit {
   heure: number;
   min: number;
   Reste: number;
+  DateNextEpisode : String;
 
   constructor(private route : ActivatedRoute) {
     this.nom = require('ouranilist-api'); 
@@ -40,8 +41,10 @@ export class DetailAnimeComponent implements OnInit {
   {
     var anime = await this.nom.GETmediaWithoutToken(id)
     .then((dataR: any) => {
+      console.log(dataR);
       this.TransformNextAiringData(dataR);
       this.ReadMoreControl(dataR.data.Media.description);
+      this.DateNextEpisode = this.TransformTimeStamp(dataR.data.Media.nextAiringEpisode.airingAt);
       }
     ); 
   }
@@ -56,6 +59,18 @@ export class DetailAnimeComponent implements OnInit {
       this.convertirSecEnJourHeureMin(this.timeNum);
     }
     this.dataAnime = dataIn;
+  }
+
+  /**
+   * @description Convertie un Unix timestamp en date
+   * @param timeStamp 
+   * @returns String
+   */
+  TransformTimeStamp(timeStamp): String{
+     var DateTemp = new Date(timeStamp*1000);
+     var DateTMSTP = DateTemp.toDateString() + ", " + DateTemp.toLocaleTimeString();
+     console.log(DateTMSTP);
+    return DateTMSTP;
   }
 
   /**
