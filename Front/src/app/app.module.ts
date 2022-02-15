@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ListeComponent } from './components/liste/liste.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { DetailAnimeComponent } from './components/detail-anime/detail-anime.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DetailAnimeComponent } from './components/detail-anime/detail-anime.com
     BrowserModule,
     AppRoutingModule,
     InfiniteScrollModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

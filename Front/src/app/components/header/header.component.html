@@ -9,17 +9,22 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-8">
+            <div class="col-lg-3">
                 <div class="header__nav">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="/">Homepage</a></li>
-                            <li><a [routerLink]="['/liste']">Liste</a></li>
+                            <li class="active"><a [routerLink]="['/']">Homepage</a></li>
                         </ul>
                     </nav>
                 </div>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-6 header__right">
+                <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" [formControl]="searchAnimeControl"> 
+                    <button class="btn btn-light" type="submit" [routerLink]="['/anime', { searchName: this.searchAnimeControl.value }]">Search</button>       
+                </form>
+            </div>
+            <div class="col-lg-1">
                 <div class="header__right">
                     <a href="#" class="search-switch"><span class="icon_search"></span></a>
                     <a href="./login.html"><span class="icon_profile"></span></a>
