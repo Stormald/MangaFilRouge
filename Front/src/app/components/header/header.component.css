@@ -24,6 +24,7 @@
 .header__menu ul li.active a {
     background: #e53637;
     color: #ffffff;
+    height: 100%;
 }
 
 .header__menu ul li:hover a {
@@ -95,14 +96,13 @@
 
 .header__right {
     text-align: right;
-    padding: 20px 0 15px;
 }
 
 .header__right a {
     display: inline-block;
     font-size: 18px;
     color: #ffffff;
-    margin-right: 30px;
+    margin-right: 10px;
 }
 
 .header__right a:last-child {
@@ -111,4 +111,8 @@
 
 .slicknav_menu {
     display: none;
+}
+
+.form-control{
+    width:70%;
 }

@@ -12,6 +12,7 @@ import { ListeComponent } from './components/liste/liste.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { DetailAnimeComponent } from './components/detail-anime/detail-anime.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     InfiniteScrollModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
