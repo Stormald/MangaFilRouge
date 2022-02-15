@@ -1,8 +1,9 @@
 export class User {
-    _id: string;
-    authdata?: any;
-    pseudo: string;
-    role = new Array<string>();
-    email?: string;
-    password: string;
+  id: number;
+  username: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  token: string;
+  authdata: string;
   }
