@@ -143,11 +143,11 @@ ol {
 	background-size: cover;
 	background-position: top center;
 }
-
+/*
 .spad {
 	padding-top: 100px;
 	padding-bottom: 100px;
-}
+}*/
 
 .text-white h1,
 .text-white h2,
@@ -944,14 +944,14 @@ ol {
 /*---------------------
   Anime Details
 -----------------------*/
-
+/*
 .anime-details {
 	padding-top: 60px;
 }
 
 .anime__details__content {
 	margin-bottom: 65px;
-}
+}*/
 
 .anime__details__text {
 	position: relative;

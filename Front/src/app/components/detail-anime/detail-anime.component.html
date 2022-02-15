@@ -1,9 +1,12 @@
 <!-- Anime Section Begin --> 
 <section class="anime-details spad"> 
+    <div class="banner" style="background-image: url({{dataAnime?.data.Media.bannerImage}});">
+        <div class="shadow"></div>
+    </div>
     <div class="container"> 
         <div class="anime__details__content"> 
             <div class="row"> <div class="col-lg-3"> 
-                <div class="anime__details__pic set-bg" [ngStyle]="{ 'background-image': 'url(' + dataAnime?.data.Media.coverImage.large + ')'}"> <!--{{anime.data.Media.coverImage.medium}}--> 
+                <div class="anime__details__pic set-bg" [ngStyle]="{ 'background-image': 'url(' + dataAnime?.data.Media.coverImage.extraLarge + ')'}"> <!--{{anime.data.Media.coverImage.medium}}--> 
                     <div matTooltip="{{ DateNextEpisode }}" *ngIf="dataAnime?.data.Media.nextAiringEpisode" class="comment">
                         <i class="fa fa-calendar"></i> Next Episode N°{{dataAnime?.data.Media.nextAiringEpisode.episode}} in {{jour}} days {{heure}}h {{min}}m
                     </div> 
