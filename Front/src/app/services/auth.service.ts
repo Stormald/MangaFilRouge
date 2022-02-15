@@ -15,9 +15,7 @@ export class AuthService {
   public currentUser: Observable<User>;
 
   constructor(private http: HttpClient, private router: Router) {
-    this.currentUserSubject = new BehaviorSubject<User>(
-      JSON.parse(sessionStorage.getItem('currentUser'))
-    );
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(sessionStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
@@ -47,7 +45,7 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
-  register(user: any) {
+  register(user: User) {
     return this.http.post(`${environment.apiUrl}/users`, user);
   }
 }

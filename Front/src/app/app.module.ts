@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { fakeBackendProvider } from './helpers/fake-backend';
+import { JwtInterceptor, ErrorInterceptor } from './helpers';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,9 +39,16 @@ import { RegisterComponent } from './components/register/register.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatTooltipModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    // provider used to create fake backend
+    fakeBackendProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
