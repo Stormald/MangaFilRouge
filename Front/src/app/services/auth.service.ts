@@ -24,7 +24,7 @@ export class AuthService {
   }
 
   login(login: string, password: string) {
-    return this.http.post<any>(`${environment.apiUrl}/login`, { login, password })
+    return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, { login, password })
     .pipe(map((user) => {
         if (user.status === 'success') {
             // store user details and basic auth credentials in local storage to keep user logged in between page refreshes
@@ -46,6 +46,6 @@ export class AuthService {
   }
 
   register(user: User) {
-    return this.http.post(`${environment.apiUrl}/users`, user);
+    return this.http.post(`${environment.apiUrl}/users/register`, user);
   }
 }
