@@ -22,9 +22,10 @@ export class DetailAnimeComponent implements OnInit {
   min: number;
   Reste: number;
   NbRecommandation :number = 4;
-  NbReview :number = 10;
+  NbReview :number = 4;
   DateNextEpisode : String;
   MoreRecom : boolean = false;
+  MoreRev : boolean = false;
 
   constructor(private route : ActivatedRoute, private router: Router) {
     this.nom = require('ouranilist-api'); 
@@ -116,7 +117,7 @@ export class DetailAnimeComponent implements OnInit {
   }
 
   /**
-   * 
+   * @description Augmente le nombre de recommandations de 5 en 5 jusqu'au max et enleve le btn en passant MoreRecon à vrai
    */
   MoreReco(){
     console.log(this.dataAnime.data.Media.recommendations.nodes.length);
@@ -127,6 +128,18 @@ export class DetailAnimeComponent implements OnInit {
     }else{
       this.NbRecommandation = this.dataAnime.data.Media.recommendations.nodes.length;
       this.MoreRecom = true;
+    }
+  }
+
+  MoreReview(){
+    console.log(this.dataAnime.data.Media.reviews.edges.length);
+    if (this.NbReview + 5 < this.dataAnime.data.Media.reviews.edges.length) {
+      this.NbReview = this.NbReview+5;
+      console.log(this.NbReview);
+      
+    }else{
+      this.NbReview = this.dataAnime.data.Media.reviews.edges.length;
+      this.MoreRev = true;
     }
   }
   
