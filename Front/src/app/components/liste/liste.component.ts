@@ -49,7 +49,7 @@ export class ListeComponent implements OnInit {
 
   async getAnime(searchName?: string) {
     this.myFilter = {
-      sort: ["TRENDING_DESC"],
+      sort: ["TRENDING_DESC","POPULARITY_DESC"],
       //status: "RELEASING",
       isAdult: false
     };
