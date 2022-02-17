@@ -7,7 +7,7 @@
         <div class="anime__details__content"> 
             <div class="row"> <div class="col-lg-3"> 
                 <div class="anime__details__pic set-bg" [ngStyle]="{ 'background-image': 'url(' + dataAnime?.data.Media.coverImage.extraLarge + ')'}"> <!--{{anime.data.Media.coverImage.medium}}--> 
-                    <div matTooltip="{{ DateNextEpisode }}" *ngIf="dataAnime?.data.Media.nextAiringEpisode" class="comment">
+                    <div matTooltip="{{ TransformTimeStamp(dataAnime?.data.Media.nextAiringEpisode?.airingAt) }}" *ngIf="dataAnime?.data.Media.nextAiringEpisode" class="comment">
                         <i class="fa fa-calendar"></i> Next Episode N°{{dataAnime?.data.Media.nextAiringEpisode.episode}} in {{jour}} days {{heure}}h {{min}}m
                     </div> 
                 </div> 
@@ -134,9 +134,14 @@
                                     <div class="section-title">
                                         <h5>you might like...</h5>
                                     </div>
-                                    <div *ngFor="let recommendations of dataAnime?.data.Media.recommendations.nodes" class="product__sidebar__view__item set-bg" [ngStyle]="{ 'background-image': 'url(' + recommendations.mediaRecommendation.coverImage.large + ')'}">
-                                        <h5><a href="#">{{recommendations.mediaRecommendation.title.english}}</a></h5>
+                                    <div *ngFor="let recommendations of dataAnime?.data.Media.recommendations.nodes; let i = index" >
+                                        <div *ngIf="i<4" >
+                                            <div  class="product__sidebar__view__item set-bgReco" [ngStyle]="{ 'background-image': 'url(' + recommendations.mediaRecommendation.coverImage.large + ')'}">
+                                            </div>
+                                            <h5 class="TitreRecommendations"><a class="btn btn-outline-dark TitreRecommendations" (click)="goToDetailAnime(recommendations.mediaRecommendation.id)">{{recommendations.mediaRecommendation.title.english}}</a></h5>
+                                        </div>
                                     </div>
+                                    
                                 </div>
                             </div>
                              <!-- Recommandation Section END --> 

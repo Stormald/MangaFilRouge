@@ -63,11 +63,6 @@ export class ListeComponent implements OnInit {
       this.page = data.data.Page.pageInfo.currentPage;
       this.lastPage = data.data.Page.pageInfo.lastPage;
       console.log(data);
-      // data.data.Page.media.forEach(element => {
-      //   console.log(element);
-      //   element = element.push(this.TransformTimeStamp(element.nextAiringEpisode.airingAt));
-      // });
-      // console.log(data);
     }
     );
 
@@ -110,7 +105,6 @@ export class ListeComponent implements OnInit {
    TransformTimeStamp(timeStamp): String{
     var DateTemp = new Date(timeStamp*1000);
     var DateTMSTP = DateTemp.toDateString() + ", " + DateTemp.toLocaleTimeString();
-    console.log(DateTMSTP);
    return DateTMSTP;
  }
 }

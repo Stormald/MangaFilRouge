@@ -23,7 +23,7 @@ export class DetailAnimeComponent implements OnInit {
   Reste: number;
   DateNextEpisode : String;
 
-  constructor(private route : ActivatedRoute) {
+  constructor(private route : ActivatedRoute, private router: Router) {
     this.nom = require('ouranilist-api'); 
     this.id = route.snapshot.params.id;
   }
@@ -44,7 +44,7 @@ export class DetailAnimeComponent implements OnInit {
       console.log(dataR);
       this.TransformNextAiringData(dataR);
       this.ReadMoreControl(dataR.data.Media.description);
-      this.DateNextEpisode = this.TransformTimeStamp(dataR.data.Media.nextAiringEpisode.airingAt);
+      //this.DateNextEpisode = this.TransformTimeStamp(dataR.data.Media.nextAiringEpisode.airingAt);
       }
     ); 
   }
@@ -69,7 +69,6 @@ export class DetailAnimeComponent implements OnInit {
   TransformTimeStamp(timeStamp): String{
      var DateTemp = new Date(timeStamp*1000);
      var DateTMSTP = DateTemp.toDateString() + ", " + DateTemp.toLocaleTimeString();
-     console.log(DateTMSTP);
     return DateTMSTP;
   }
 
@@ -103,6 +102,14 @@ export class DetailAnimeComponent implements OnInit {
     } else {
       this.ShowReadMore = false;
     }
+  }
+  /**
+   * @description navigate vers la page detail-anime en passant un id d'anime
+   * @param id 
+   */
+  goToDetailAnime(id: number) {
+    console.log(id);
+    this.router.navigate(['/animes', id]);
   }
   
   /**
