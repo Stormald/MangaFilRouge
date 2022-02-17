@@ -22,7 +22,7 @@ export class DetailAnimeComponent implements OnInit {
   min: number;
   Reste: number;
   NbRecommandation :number = 4;
-  NbReview :number = 5;
+  NbReview :number = 4;
   DateNextEpisode : String;
   MoreRecom : boolean = false;
   MoreRev : boolean = false;
