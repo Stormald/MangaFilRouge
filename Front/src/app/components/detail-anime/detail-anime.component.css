@@ -247,3 +247,32 @@
     height: 100%;
     width: 100%;
 }
+
+.SideBar{
+    margin-top: 5%;
+    border: solid;
+    border-radius: 5px;
+    border-color: #fff;
+    background-color: #1d1e39;
+    
+}
+.elementSideBAr{
+    color: #fff;
+    padding: 2%;
+}
+
+.elementTag{
+    font-weight: bold;
+    font-size:  medium;
+}
+.elementtexte{
+    color: #fff;
+    margin-left: 35%;
+}
+.margingTop5{
+    margin-top: 5%;
+}
+.TitleAnime{
+font-size: xx-large;
+
+}
