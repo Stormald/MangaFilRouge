@@ -7,7 +7,7 @@
         <div class="anime__details__content"> 
             <div class="row"> <div class="col-lg-3"> 
                 <div class="anime__details__pic set-bg" [ngStyle]="{ 'background-image': 'url(' + dataAnime?.data.Media.coverImage.extraLarge + ')'}"> <!--{{anime.data.Media.coverImage.medium}}--> 
-                    <div matTooltip="{{ DateNextEpisode }}" *ngIf="dataAnime?.data.Media.nextAiringEpisode" class="comment">
+                    <div matTooltip="{{ TransformTimeStamp(dataAnime?.data.Media.nextAiringEpisode?.airingAt) }}" *ngIf="dataAnime?.data.Media.nextAiringEpisode" class="comment">
                         <i class="fa fa-calendar"></i> Next Episode N°{{dataAnime?.data.Media.nextAiringEpisode.episode}} in {{jour}} days {{heure}}h {{min}}m
                     </div> 
                 </div> 
@@ -106,7 +106,7 @@
                                         <h5>Reviews</h5>
                                     </div>
                                     <div *ngFor="let review of dataAnime?.data.Media.reviews.edges; let i = index" class="anime__review__item">
-                                        <div *ngIf="i<10">
+                                        <div *ngIf="i<NbReview">
                                             <div class="anime__review__item__pic">
                                                 <img src="img/anime/review-1.jpg" alt="">
                                             </div>
@@ -134,9 +134,21 @@
                                     <div class="section-title">
                                         <h5>you might like...</h5>
                                     </div>
-                                    <div *ngFor="let recommendations of dataAnime?.data.Media.recommendations.nodes" class="product__sidebar__view__item set-bg" [ngStyle]="{ 'background-image': 'url(' + recommendations.mediaRecommendation.coverImage.large + ')'}">
-                                        <h5><a href="#">{{recommendations.mediaRecommendation.title.english}}</a></h5>
+                                    <div *ngFor="let recommendations of dataAnime?.data.Media.recommendations.nodes; let i = index" >
+                                        <div *ngIf="i<NbRecommandation" >
+                                            <div  class="product__sidebar__view__item set-bgReco" [ngStyle]="{ 'background-image': 'url(' + recommendations.mediaRecommendation.coverImage.large + ')'}">
+                                            </div>
+                                            <h5 *ngIf="recommendations.mediaRecommendation.title?.english" class="TitreRecommendations"><a class="btn btn-outline-dark TitreRecommendations" (click)="goToDetailAnime(recommendations.mediaRecommendation.id)">{{recommendations.mediaRecommendation.title.english}}</a></h5>
+                                            <h5 *ngIf="!recommendations.mediaRecommendation.title?.english && recommendations.mediaRecommendation.title?.romaji" class="TitreRecommendations"><a class="btn btn-outline-dark TitreRecommendations" (click)="goToDetailAnime(recommendations.mediaRecommendation.id)">{{recommendations.mediaRecommendation.title.romaji}}</a></h5>
+                                            <h5 *ngIf="!recommendations.mediaRecommendation.title?.english && !recommendations.mediaRecommendation.title?.romaji && !recommendations.mediaRecommendation.title?.native" class="TitreRecommendations"><a class="btn btn-outline-dark TitreRecommendations" (click)="goToDetailAnime(recommendations.mediaRecommendation.id)">{{recommendations.mediaRecommendation.title.native}}</a></h5>
+                                        </div>
                                     </div>
+                                    <div>
+                                        <a *ngIf="!MoreRecom" class="read-more.content-read-more more-link read-more read-more.content-read-more:hover more-link:hover read-more:hover"  type="button" (click)="MoreReco()" >
+                                            Look for more recommendations
+                                         </a>
+                                    </div>
+                                    
                                 </div>
                             </div>
                              <!-- Recommandation Section END --> 
