@@ -1,10 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Server.Repositories;
+using Server.Repositories.Interfaces;
+using Server.Repositories.MariaDB;
 using Server.Services;
 using System;
 using System.Collections.Generic;
@@ -31,11 +34,16 @@ namespace Server
                 builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
             }));
 
-            // REPOSITORIES
-            services.AddSingleton<IUsersRepository, UsersRepository>();
+            services.AddEntityFrameworkMySql().AddDbContext<mangafilrouge_bddContext>(
+        options => options.UseMySql("server=mysql-manga-fil-rouge.alwaysdata.net;uid=258517;pwd=Salut2022;database=manga-fil-rouge_bdd", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.6.5-mariadb")));
+        // REPOSITORIES
+        services.AddTransient<ICategoryListPersoRepository, CategoryListPersoRepository>();
 
             // SERVICES
-            services.AddSingleton<IUsersService, UsersService>();
+            services.AddTransient<ICategoryListPersoService, CategoryListPersoService>();
+
+            services.AddControllers();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +57,7 @@ namespace Server
             app.UseCors("MyPolicy");
 
             app.UseRouting();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
