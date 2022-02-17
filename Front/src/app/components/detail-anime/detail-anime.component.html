@@ -1,6 +1,6 @@
 <!-- Anime Section Begin --> 
 <section class="anime-details spad"> 
-    <div class="banner" style="background-image: url({{dataAnime?.data.Media.bannerImage}});">
+    <div class="banner" *ngIf="dataAnime?.data.Media.bannerImage"style="background-image: url({{dataAnime?.data.Media.bannerImage}});">
         <div class="shadow"></div>
     </div>
     <div class="container"> 
