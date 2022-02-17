@@ -21,7 +21,10 @@ export class DetailAnimeComponent implements OnInit {
   heure: number;
   min: number;
   Reste: number;
+  NbRecommandation :number = 4;
+  NbReview :number = 10;
   DateNextEpisode : String;
+  MoreRecom : boolean = false;
 
   constructor(private route : ActivatedRoute, private router: Router) {
     this.nom = require('ouranilist-api'); 
@@ -42,9 +45,9 @@ export class DetailAnimeComponent implements OnInit {
     var anime = await this.nom.GETmediaWithoutToken(id)
     .then((dataR: any) => {
       console.log(dataR);
+      this.dataAnime = dataR;
       this.TransformNextAiringData(dataR);
       this.ReadMoreControl(dataR.data.Media.description);
-      //this.DateNextEpisode = this.TransformTimeStamp(dataR.data.Media.nextAiringEpisode.airingAt);
       }
     ); 
   }
@@ -110,6 +113,21 @@ export class DetailAnimeComponent implements OnInit {
   goToDetailAnime(id: number) {
     console.log(id);
     this.router.navigate(['/animes', id]);
+  }
+
+  /**
+   * 
+   */
+  MoreReco(){
+    console.log(this.dataAnime.data.Media.recommendations.nodes.length);
+    if (this.NbRecommandation + 5 < this.dataAnime.data.Media.recommendations.nodes.length) {
+      this.NbRecommandation = this.NbRecommandation+5;
+      console.log(this.NbRecommandation);
+      
+    }else{
+      this.NbRecommandation = this.dataAnime.data.Media.recommendations.nodes.length;
+      this.MoreRecom = true;
+    }
   }
   
   /**
