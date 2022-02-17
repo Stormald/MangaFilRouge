@@ -49,7 +49,7 @@ export class ListeComponent implements OnInit {
 
   async getAnime(searchName?: string) {
     this.myFilter = {
-      sort: ["TRENDING_DESC"],
+      sort: ["TRENDING_DESC","POPULARITY_DESC"],
       //status: "RELEASING",
       isAdult: false
     };
@@ -110,7 +110,7 @@ export class ListeComponent implements OnInit {
    TransformTimeStamp(timeStamp): String{
     var DateTemp = new Date(timeStamp*1000);
     var DateTMSTP = DateTemp.toDateString() + ", " + DateTemp.toLocaleTimeString();
-    console.log(DateTMSTP);
+    //console.log(DateTMSTP);
    return DateTMSTP;
  }
 }

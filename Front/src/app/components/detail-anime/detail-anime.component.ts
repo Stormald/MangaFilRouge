@@ -69,7 +69,7 @@ export class DetailAnimeComponent implements OnInit {
   TransformTimeStamp(timeStamp): String{
      var DateTemp = new Date(timeStamp*1000);
      var DateTMSTP = DateTemp.toDateString() + ", " + DateTemp.toLocaleTimeString();
-     console.log(DateTMSTP);
+     //console.log(DateTMSTP);
     return DateTMSTP;
   }
 
