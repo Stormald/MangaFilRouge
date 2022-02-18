@@ -35,9 +35,9 @@ namespace Server
             }));
 
             services.AddEntityFrameworkMySql().AddDbContext<mangafilrouge_bddContext>(
-        options => options.UseMySql("server=mysql-manga-fil-rouge.alwaysdata.net;uid=258517;pwd=Salut2022;database=manga-fil-rouge_bdd", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.6.5-mariadb")));
-        // REPOSITORIES
-        services.AddTransient<ICategoryListPersoRepository, CategoryListPersoRepository>();
+        options => options.UseMySql(Configuration.GetConnectionString("admin"), Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.6.5-mariadb")));
+            // REPOSITORIES
+            services.AddTransient<ICategoryListPersoRepository, CategoryListPersoRepository>();
 
             // SERVICES
             services.AddTransient<ICategoryListPersoService, CategoryListPersoService>();
