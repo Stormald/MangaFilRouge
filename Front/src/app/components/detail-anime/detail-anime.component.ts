@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
+import { Anime } from 'src/app/models/anime.model';
+import { AnimeService } from 'src/app/services/anime.service';
 declare var require: any; 
 
 @Component({
@@ -13,6 +15,7 @@ export class DetailAnimeComponent implements OnInit {
   id : number;
   nom: { GETmediaWithoutToken: (arg0: number) => Promise<any>; } ; 
   dataAnime: any ; 
+  ourDataAnime: Anime;
   studio: any;
   isReadMore = true
   ShowReadMore = false
@@ -27,13 +30,26 @@ export class DetailAnimeComponent implements OnInit {
   MoreRecom : boolean = false;
   MoreRev : boolean = false;
 
-  constructor(private route : ActivatedRoute, private router: Router) {
+  constructor(private route : ActivatedRoute, private router: Router, private serviceAnime : AnimeService) {
     this.nom = require('ouranilist-api'); 
     this.id = route.snapshot.params.id;
   }
 
   ngOnInit(): void {
     this.getAnime(this.id);
+    this.getAnimeInfosInOurBack(this.id);
+  }
+
+  /**
+   * @description Get anime infos (reviews,...) from our own back
+   * @param id id d'un anime same as the id in the Anilist API
+   */
+  async getAnimeInfosInOurBack(id: number) {
+    await this.serviceAnime.getAnime(id).subscribe((dataBack: any) => {
+      console.log(dataBack);
+      this.ourDataAnime = dataBack;
+      }
+    ); 
   }
   
 
@@ -43,7 +59,7 @@ export class DetailAnimeComponent implements OnInit {
    */
   async getAnime(id : number)
   {
-    var anime = await this.nom.GETmediaWithoutToken(id)
+    await this.nom.GETmediaWithoutToken(id)
     .then((dataR: any) => {
       console.log(dataR);
       this.dataAnime = dataR;

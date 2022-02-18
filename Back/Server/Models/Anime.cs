@@ -11,10 +11,13 @@ namespace Server.Models
         public Anime()
         {
             ListPersos = new HashSet<ListPerso>();
+            Reviews = new HashSet<Review>();
         }
 
         public int Id { get; set; }
 
         public virtual ICollection<ListPerso> ListPersos { get; set; }
+        public virtual ICollection<Review> Reviews { get; set; }
+
     }
 }

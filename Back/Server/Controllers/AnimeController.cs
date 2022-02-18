@@ -12,46 +12,46 @@ namespace Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ReviewController : ControllerBase
+    public class AnimeController : ControllerBase
     {
-        private readonly IReviewService service;
-        public ReviewController(IReviewService Service)
+        private readonly IAnimeService service;
+        public AnimeController(IAnimeService Service)
         {
             service = Service;
         }
 
         [HttpGet("{id}")]
-        public IReview GetReview(int id)
+        public IAnime GetAnime(int id)
         {
-            return this.service.GetReview(id);
+            return this.service.GetAnime(id);
         }
 
         [HttpGet]
-        public IEnumerable<IReview> GetReviews()
+        public IEnumerable<IAnime> GetAnimes()
         {
-            return this.service.GetReviews();
+            return this.service.GetAnimes();
         }
 
 
         [HttpPost]
-        public IReview AddReview(IReview review)
+        public IAnime AddAnime(IAnime anime)
         {
-            return this.service.AddReview(review);
+            return this.service.AddAnime(anime);
         }
 
         [HttpPut]
-        public IReview UpdateReview(IReview review)
+        public IAnime UpdateAnime(IAnime anime)
         {
-            return this.service.UpdateReview(review);
+            return this.service.UpdateAnime(anime);
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteReview(int id)
+        public IActionResult DeleteAnime(int id)
         {
             try
             {
-                this.service.DeleteReview(id);
-                return Ok("The review got deleted.");
+                this.service.DeleteAnime(id);
+                return Ok("The anime got deleted.");
             }
             catch (Exception e)
             {

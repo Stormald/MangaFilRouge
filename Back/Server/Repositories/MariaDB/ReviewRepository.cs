@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Server.Interfaces;
+using Server.Models;
 using Server.Repositories.Interfaces;
 
 namespace Server.Repositories.MariaDB
@@ -17,27 +18,27 @@ namespace Server.Repositories.MariaDB
 
         public IReview AddReview(IReview review)
         {
-            return null;
+            return (IReview)this.context.Reviews.Add(review as Review);
         }
 
-        public IReview DeleteReview(int id)
+        public void DeleteReview(int id)
         {
-            throw new NotImplementedException();
+            this.context.Reviews.Remove(this.context.Reviews.FirstOrDefault(e => e.Id == id));
         }
 
         public IReview GetReview(int id)
         {
-            return context.Reviews.FirstOrDefault(e => e.Id == id);
+            return this.context.Reviews.FirstOrDefault(e => e.Id == id);
         }
 
         public IEnumerable<IReview> GetReviews()
         {
-            throw new NotImplementedException();
+            return this.context.Reviews.ToList();
         }
 
         public IReview UpdateReview(IReview review)
         {
-            throw new NotImplementedException();
+            return (IReview)this.context.Reviews.Update(review as Review);
         }
     }
 }

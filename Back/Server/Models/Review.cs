@@ -19,8 +19,10 @@ namespace Server.Models
         public int? Likes { get; set; }
         public int? Dislikes { get; set; }
         public int UserId { get; set; }
+        public int AnimeId { get; set; }
 
         public virtual User User { get; set; }
+        public virtual Anime Anime { get; set; }
         public virtual ICollection<Report> Reports { get; set; }
     }
 }

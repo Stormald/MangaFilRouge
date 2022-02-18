@@ -235,6 +235,8 @@ namespace Server
 
                 entity.HasIndex(e => e.UserId, "INDEX_USER-ID");
 
+                entity.HasIndex(e => e.AnimeId, "INDEX_ANIME-ID");
+
                 entity.Property(e => e.Id)
                     .HasColumnType("int(11)")
                     .ValueGeneratedNever()
@@ -261,11 +263,21 @@ namespace Server
                     .HasColumnType("int(11)")
                     .HasColumnName("user_id");
 
+                entity.Property(e => e.AnimeId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("anime_id");
+
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Reviews)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_UserReview");
+
+                entity.HasOne(d => d.Anime)
+                    .WithMany(p => p.Reviews)
+                    .HasForeignKey(d => d.AnimeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_AnimeReview");
             });
 
             modelBuilder.Entity<User>(entity =>

@@ -1939,9 +1939,9 @@ ol {
 }
 
 .page-up {
-	position: absolute;
+	/*position: absolute;*/
 	left: 50%;
-	top: -25px;
+	/*top: -25px;*/
 	margin-left: -25px;
 }
 

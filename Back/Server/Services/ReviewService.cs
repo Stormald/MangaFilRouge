@@ -17,12 +17,12 @@ namespace Server.Services
 
         public IReview AddReview(IReview review)
         {
-            throw new NotImplementedException();
+            return this.repo.AddReview(review);
         }
 
-        public IReview DeleteReview(int id)
+        public void DeleteReview(int id)
         {
-            throw new NotImplementedException();
+            this.repo.DeleteReview(id);
         }
 
         public IReview GetReview(int id)
@@ -32,12 +32,12 @@ namespace Server.Services
 
         public IEnumerable<IReview> GetReviews()
         {
-            throw new NotImplementedException();
+            return this.repo.GetReviews();
         }
 
         public IReview UpdateReview(IReview review)
         {
-            throw new NotImplementedException();
+            return this.repo.UpdateReview(review);
         }
     }
 }

@@ -12,6 +12,6 @@ namespace Server.Services
         IEnumerable<IReview> GetReviews();
         IReview AddReview(IReview review);
         IReview UpdateReview(IReview review);
-        IReview DeleteReview(int id);
+        void DeleteReview(int id);
     }
 }
