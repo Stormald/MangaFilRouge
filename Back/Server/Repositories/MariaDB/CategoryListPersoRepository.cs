@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Server.Interfaces;
+using Server.Models;
 using Server.Repositories.Interfaces;
 
 namespace Server.Repositories.MariaDB
@@ -15,27 +16,27 @@ namespace Server.Repositories.MariaDB
             context = Context;
         }
 
-        public ICategoryListPerso AddCategoryListPerso(ICategoryListPerso categoryListPerso)
+        public CategoryListPerso AddCategoryListPerso(CategoryListPerso categoryListPerso)
         {
             return null;
         }
 
-        public ICategoryListPerso DeleteCategoryListPerso(int id)
+        public CategoryListPerso DeleteCategoryListPerso(int id)
         {
             throw new NotImplementedException();
         }
 
-        public ICategoryListPerso GetCategoryListPerso(int id)
+        public CategoryListPerso GetCategoryListPerso(int id)
         {
             return context.CategoryListPersos.FirstOrDefault(e => e.Id == id);
         }
 
-        public IEnumerable<ICategoryListPerso> GetCategoryListPersos()
+        public IEnumerable<CategoryListPerso> GetCategoryListPersos()
         {
             throw new NotImplementedException();
         }
 
-        public ICategoryListPerso UpdateCategoryListPerso(ICategoryListPerso categoryListPerso)
+        public CategoryListPerso UpdateCategoryListPerso(CategoryListPerso categoryListPerso)
         {
             throw new NotImplementedException();
         }

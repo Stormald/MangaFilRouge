@@ -1,4 +1,5 @@
 ﻿using Server.Interfaces;
+using Server.Models;
 using Server.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace Server.Services
             repo = Repo;
         }
 
-        public IAnime AddAnime(IAnime anime)
+        public IAnime AddAnime(Anime anime)
         {
             return this.repo.AddAnime(anime);
         }
@@ -35,7 +36,7 @@ namespace Server.Services
             return this.repo.GetAnimes();
         }
 
-        public IAnime UpdateAnime(IAnime anime)
+        public IAnime UpdateAnime(Anime anime)
         {
             return this.repo.UpdateAnime(anime);
         }

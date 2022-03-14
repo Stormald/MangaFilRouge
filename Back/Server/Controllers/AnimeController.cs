@@ -34,13 +34,13 @@ namespace Server.Controllers
 
 
         [HttpPost]
-        public IAnime AddAnime(IAnime anime)
+        public IAnime AddAnime(Anime anime)
         {
             return this.service.AddAnime(anime);
         }
 
         [HttpPut]
-        public IAnime UpdateAnime(IAnime anime)
+        public IAnime UpdateAnime(Anime anime)
         {
             return this.service.UpdateAnime(anime);
         }

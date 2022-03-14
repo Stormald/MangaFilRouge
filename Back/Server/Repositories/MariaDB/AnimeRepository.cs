@@ -16,29 +16,39 @@ namespace Server.Repositories.MariaDB
             context = Context;
         }
 
-        public IAnime AddAnime(IAnime anime)
+        public Anime AddAnime(Anime anime)
         {
-            return (IAnime)this.context.Animes.Add(anime as Anime);
+            this.context.Animes.Add(anime);
+            this.context.SaveChanges();
+            return anime;
         }
 
         public void DeleteAnime(int id)
         {
-            this.context.Animes.Remove(this.context.Animes.FirstOrDefault(e => e.Id == id));
+            this.context.Animes.Remove(this.context.Animes.FirstOrDefault(a => a.Id == id));
         }
 
-        public IAnime GetAnime(int id)
+        public Anime GetAnime(int id)
         {
-            return this.context.Animes.FirstOrDefault(e => e.Id == id);
+            Anime anime = this.context.Animes.FirstOrDefault(a => a.Id == id);
+
+            if(anime != null)
+            {
+                anime.Reviews = this.context.Reviews.Where(r => r.AnimeId == id).ToList();
+            }
+            return anime;
         }
 
-        public IEnumerable<IAnime> GetAnimes()
+        public IEnumerable<Anime> GetAnimes()
         {
             return this.context.Animes.ToList();
         }
 
-        public IAnime UpdateAnime(IAnime anime)
+        public Anime UpdateAnime(Anime anime)
         {
-            return (IAnime)this.context.Animes.Update(anime as Anime);
+            this.context.Animes.Update(anime);
+            this.context.SaveChanges();
+            return anime;
         }
     }
 }

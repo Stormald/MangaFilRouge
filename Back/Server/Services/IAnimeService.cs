@@ -1,4 +1,5 @@
 ﻿using Server.Interfaces;
+using Server.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,8 @@ namespace Server.Services
     {
         IAnime GetAnime(int id);
         IEnumerable<IAnime> GetAnimes();
-        IAnime AddAnime(IAnime anime);
-        IAnime UpdateAnime(IAnime anime);
+        IAnime AddAnime(Anime anime);
+        IAnime UpdateAnime(Anime anime);
         void DeleteAnime(int id);
     }
 }

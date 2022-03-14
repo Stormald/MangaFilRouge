@@ -1,4 +1,5 @@
 ﻿using Server.Interfaces;
+using Server.Models;
 using Server.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace Server.Services
             repo = Repo;
         }
 
-        public IReview AddReview(IReview review)
+        public IReview AddReview(Review review)
         {
             return this.repo.AddReview(review);
         }
@@ -35,7 +36,7 @@ namespace Server.Services
             return this.repo.GetReviews();
         }
 
-        public IReview UpdateReview(IReview review)
+        public IReview UpdateReview(Review review)
         {
             return this.repo.UpdateReview(review);
         }

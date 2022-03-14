@@ -3,7 +3,7 @@ export class Review {
     text: string;
     likes: number;
     dislikes: number;
-    score_review: number;
-    user_id: number;
-    anime_id: number;
+    scoreReview: number;
+    userId: number;
+    animeId: number;
 }

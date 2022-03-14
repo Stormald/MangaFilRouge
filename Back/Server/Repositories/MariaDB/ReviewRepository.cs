@@ -16,9 +16,12 @@ namespace Server.Repositories.MariaDB
             context = Context;
         }
 
-        public IReview AddReview(IReview review)
+        public Review AddReview(Review review)
         {
-            return (IReview)this.context.Reviews.Add(review as Review);
+            this.context.Reviews.Add(review);
+            Console.WriteLine(review);
+            this.context.SaveChanges();
+            return review;
         }
 
         public void DeleteReview(int id)
@@ -36,9 +39,11 @@ namespace Server.Repositories.MariaDB
             return this.context.Reviews.ToList();
         }
 
-        public IReview UpdateReview(IReview review)
+        public IReview UpdateReview(Review review)
         {
-            return (IReview)this.context.Reviews.Update(review as Review);
+            this.context.Reviews.Update(review);
+            this.context.SaveChanges();
+            return review;
         }
     }
 }

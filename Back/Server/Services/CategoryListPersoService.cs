@@ -1,4 +1,5 @@
 ﻿using Server.Interfaces;
+using Server.Models;
 using Server.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace Server.Services
             repo = Repo;
         }
 
-        public ICategoryListPerso AddCategoryListPerso(ICategoryListPerso categoryListPerso)
+        public ICategoryListPerso AddCategoryListPerso(CategoryListPerso categoryListPerso)
         {
             throw new NotImplementedException();
         }
@@ -35,7 +36,7 @@ namespace Server.Services
             throw new NotImplementedException();
         }
 
-        public ICategoryListPerso UpdateCategoryListPerso(ICategoryListPerso categoryListPerso)
+        public ICategoryListPerso UpdateCategoryListPerso(CategoryListPerso categoryListPerso)
         {
             throw new NotImplementedException();
         }

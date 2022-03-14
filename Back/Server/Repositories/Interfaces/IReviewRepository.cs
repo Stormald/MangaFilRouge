@@ -11,8 +11,8 @@ namespace Server.Repositories.Interfaces
     {
         IReview GetReview(int id);
         IEnumerable<IReview> GetReviews();
-        IReview AddReview(IReview review);
-        IReview UpdateReview(IReview review);
+        Review AddReview(Review review);
+        IReview UpdateReview(Review review);
         void DeleteReview(int id);
 
     }

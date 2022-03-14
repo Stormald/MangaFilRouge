@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Server.Repositories.Interfaces
 {
-    public interface IReviewRepository
+    public interface IAnimeRepository
     {
-        IReview GetReview(int id);
-        IEnumerable<IReview> GetReviews();
-        IReview AddReview(IReview review);
-        IReview UpdateReview(IReview review);
-        void DeleteReview(int id);
+        Anime GetAnime(int id);
+        IEnumerable<Anime> GetAnimes();
+        Anime AddAnime(Anime anime);
+        Anime UpdateAnime(Anime anime);
+        void DeleteAnime(int id);
 
     }
 }

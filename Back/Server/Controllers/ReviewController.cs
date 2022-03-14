@@ -34,13 +34,13 @@ namespace Server.Controllers
 
 
         [HttpPost]
-        public IReview AddReview(IReview review)
+        public IReview AddReview(Review review)
         {
             return this.service.AddReview(review);
         }
 
         [HttpPut]
-        public IReview UpdateReview(IReview review)
+        public IReview UpdateReview(Review review)
         {
             return this.service.UpdateReview(review);
         }

@@ -179,7 +179,6 @@
 .anime__details__form form textarea {
     width: 100%;
     font-size: 15px;
-    color: #b7b7b7;
     padding-left: 20px;
     padding-top: 12px;
     height: 110px;
@@ -280,4 +279,16 @@ font-size: xx-large;
     color: #fff;
     text-align: center;
     font-size: small;
+}
+
+textarea{
+    color: black;
+}
+
+::placeholder {
+    color: grey;
+}
+
+.select-form{
+    margin-bottom: 10px;
 }
