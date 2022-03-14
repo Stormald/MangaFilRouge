@@ -1,4 +1,5 @@
 ﻿using Server.Interfaces;
+using Server.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,8 @@ namespace Server.Services
     {
         IReview GetReview(int id);
         IEnumerable<IReview> GetReviews();
-        IReview AddReview(IReview review);
-        IReview UpdateReview(IReview review);
-        IReview DeleteReview(int id);
+        IReview AddReview(Review review);
+        IReview UpdateReview(Review review);
+        void DeleteReview(int id);
     }
 }

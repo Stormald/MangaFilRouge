@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace Server
+namespace Server.Models
 {
     public partial class Manga : IManga
     {

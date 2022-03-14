@@ -1,4 +1,5 @@
 ﻿using Server.Interfaces;
+using Server.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +9,11 @@ namespace Server.Repositories.Interfaces
 {
     public interface ICategoryListPersoRepository
     {
-        ICategoryListPerso GetCategoryListPerso(int id);
-        IEnumerable<ICategoryListPerso> GetCategoryListPersos();
-        ICategoryListPerso AddCategoryListPerso(ICategoryListPerso categoryListPerso);
-        ICategoryListPerso UpdateCategoryListPerso(ICategoryListPerso categoryListPerso);
-        ICategoryListPerso DeleteCategoryListPerso(int id);
+        CategoryListPerso GetCategoryListPerso(int id);
+        IEnumerable<CategoryListPerso> GetCategoryListPersos();
+        CategoryListPerso AddCategoryListPerso(CategoryListPerso categoryListPerso);
+        CategoryListPerso UpdateCategoryListPerso(CategoryListPerso categoryListPerso);
+        CategoryListPerso DeleteCategoryListPerso(int id);
 
     }
 }

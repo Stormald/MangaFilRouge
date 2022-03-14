@@ -1,4 +1,5 @@
 ﻿using Server.Interfaces;
+using Server.Models;
 using Server.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -15,14 +16,14 @@ namespace Server.Services
             repo = Repo;
         }
 
-        public IReview AddReview(IReview review)
+        public IReview AddReview(Review review)
         {
-            throw new NotImplementedException();
+            return this.repo.AddReview(review);
         }
 
-        public IReview DeleteReview(int id)
+        public void DeleteReview(int id)
         {
-            throw new NotImplementedException();
+            this.repo.DeleteReview(id);
         }
 
         public IReview GetReview(int id)
@@ -32,12 +33,12 @@ namespace Server.Services
 
         public IEnumerable<IReview> GetReviews()
         {
-            throw new NotImplementedException();
+            return this.repo.GetReviews();
         }
 
-        public IReview UpdateReview(IReview review)
+        public IReview UpdateReview(Review review)
         {
-            throw new NotImplementedException();
+            return this.repo.UpdateReview(review);
         }
     }
 }

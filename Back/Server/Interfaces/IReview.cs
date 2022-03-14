@@ -12,6 +12,7 @@ namespace Server.Interfaces
         int ScoreReview { get; set; }
         string Text { get; set; }
         User User { get; set; }
+        Anime Anime { get; set; }
         int UserId { get; set; }
     }
 }
