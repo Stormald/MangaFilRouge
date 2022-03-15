@@ -11,7 +11,7 @@ export class ModalAddToMyListComponent implements OnInit {
   @Input() anime : any;
 
   constructor(config: NgbModalConfig, private modalService: NgbModal) {
-    config.backdrop = 'static';
+    config.backdrop = true;
     config.keyboard = false;
    }
 
@@ -19,7 +19,14 @@ export class ModalAddToMyListComponent implements OnInit {
   }
 
   open(content) {
-    this.modalService.open(content);
+    this.modalService.open(content, { size: 'lg' });
+  }
+
+  addToMyList(obj) {
+    let IdAnimeToSave  = obj.data.Media.id;
+    console.log(IdAnimeToSave);
+    //AJOUTER LA REQUETE POUR ADD TO MY LIST
+    
   }
 
 }

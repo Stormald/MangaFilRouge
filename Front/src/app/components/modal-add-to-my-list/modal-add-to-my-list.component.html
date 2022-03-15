@@ -1,13 +1,55 @@
 <ng-template #content let-c="close" let-d="dismiss">
+    
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+        <!-- <div class="banner" *ngIf="anime?.data.Media.bannerImage" style="background-image: url({{anime?.data.Media.bannerImage}});">
+            <div class="shadow"></div>
+        </div>
+        <div class="anime__details__content"> 
+            <div class="row"> 
+                <div class="col-lg-3"> 
+                    <div class="anime set-bg" [ngStyle]="{ 'background-image': 'url(' + anime?.data.Media.coverImage.extraLarge + ')'}">
+                    </div>
+                </div>
+            </div>
+        </div> -->
+      <h4 class="modal-title" id="modal-basic-title">{{anime?.data.Media.title.english}} - {{anime?.data.Media.title.romaji}}</h4>
       <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
     </div>
     <div class="modal-body">
-      <p>Hello, World!</p>
+      <!-- <div class="row">
+         <div class="col">
+          <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Status</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button ngbDropdownItem>Action - 1</button>
+              <button ngbDropdownItem>Another Action</button>
+              <button ngbDropdownItem>Something else is here</button>
+            </div>
+          </div>
+        </div> -->
+        <div class="row Marg"> 
+            <div class="col-lg-6 col-md-6 ">
+                 <ul>
+                    <li class="liCenter" *ngIf="anime?.data.Media.type"><span>Type:</span> {{anime?.data.Media.type}}</li>
+                    <li *ngIf="anime?.data.Media.format"><span>Format:</span> {{anime?.data.Media.format}}</li>
+                    <li *ngIf="anime?.data.Media.status"><span>Status:</span> {{anime?.data.Media.status}}</li>
+                </ul>
+            </div> 
+            <div class="col-lg-6 col-md-6"> 
+                <ul> 
+                    <li *ngIf="anime?.data.Media.episodes"><span>Episodes:</span> {{anime?.data.Media.episodes}}</li> 
+                    <li *ngIf="anime?.data.Media.duration"><span>Duration:</span> {{anime?.data.Media.duration}} min</li> 
+                    <li *ngIf="anime?.data.Media.seasonInt"><span>Saison:</span> {{anime?.data.Media.season}} {{anime?.data.Media.seasonYear}}</li> 
+
+                </ul> 
+            </div> 
+            <div>
+                
+            </div>
+        </div>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+      <button type="button" class="btn btn-outline-dark" (click)="addToMyList(anime)">ADD TO MY LIST</button>
     </div>
   </ng-template>
   

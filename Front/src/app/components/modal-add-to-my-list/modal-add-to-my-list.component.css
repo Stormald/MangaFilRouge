@@ -1,0 +1,26 @@
+.banner{
+    height: 210px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    background-position: 50% 35%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.shadow{
+    background: linear-gradient(180deg,rgba(6,13,34,0) 40%,rgba(6,13,34,.6));
+    height: 100%;
+    width: 100%;
+}
+.liCenter{
+    align-content: center;
+}
+.Marg{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.modal-title{
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-size: x-large;
+}
