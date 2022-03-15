@@ -27,63 +27,55 @@ namespace Server.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            try
-            {
-                var listUser = this.usersService.GeyAllUser();
+            var listUser = this.usersService.GeyAllUser();
 
-                if (listUser == null)
-                {
-                    throw new ArgumentNullException("No users were found.");
-                }
+            if (listUser == null)
+            {
+                throw new ArgumentNullException("No users were found.");
+            }
 
-                return this.Ok(listUser);
-            }
-            catch(ArgumentNullException e)
-            {
-                return this.NotFound(e.Message);
-            }
-            catch (Exception e)
-            {
-                return this.BadRequest(e.Message);
-            }
+            return this.Ok(listUser);
         }
 
-        [HttpGet]
-        public IActionResult Get(string id)
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
         {
-            try
-            {
-                var user = this.usersService.GetUserById(id);
+            var user = this.usersService.GetUserById(id);
 
-                if (user == null)
-                {
-                    throw new ArgumentNullException($"The user was not found..");
-                }
+            if (user == null)
+            {
+                throw new ArgumentNullException($"The user was not found..");
+            }
 
-                return this.Ok(user);
-            }
-            catch(ArgumentNullException ex)
-            {
-                return this.NotFound(ex.Message);
-            }
-            catch (Exception e)
-            {
-                return this.BadRequest(e.Message);
-            }
+            return this.Ok(user);
         }
 
         [HttpPost]
         public IActionResult Post(User user)
         {
-            try
-            {
-                var newUser = this.usersService.CreateUser(user);
-                return this.Ok(newUser);
-            }
-            catch (Exception e)
-            {
-                return this.BadRequest(e.Message);
-            }
+            var newUser = this.usersService.CreateUser(user);
+            return this.Ok(newUser);
         }
+
+        [HttpPost("authenticate")]
+        public IActionResult Autenthicate(UserCredential userCredential)
+        {
+            var currentUser = this.usersService.GeyAllUser()
+                .FirstOrDefault( user => user.Email == userCredential.Login && user.Password == userCredential.Password);
+
+            if (currentUser == null)
+            {
+                return NotFound("user not found.\nMaybe the login or password is wrong.");
+            }
+
+            return this.Ok(currentUser);
+        }
+    }
+
+    public class UserCredential
+    {
+        public string Login { get; set; }
+
+        public string Password { get; set; }
     }
 }

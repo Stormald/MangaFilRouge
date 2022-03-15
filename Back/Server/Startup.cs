@@ -47,6 +47,7 @@ namespace Server
             services.AddTransient<ICategoryListPersoRepository, CategoryListPersoRepository>();
             services.AddTransient<IReviewRepository, ReviewRepository>();
             services.AddTransient<IAnimeRepository, AnimeRepository>();
+            services.AddTransient<IUsersRepository, UsersRepository>();
 
             // SERVICES
             services.AddTransient<ICategoryListPersoService, CategoryListPersoService>();
@@ -59,6 +60,7 @@ namespace Server
                 options.JsonSerializerOptions.WriteIndented = true;
             });
         }
+            services.AddTransient<IUsersService, UsersService>();
 
 
 
