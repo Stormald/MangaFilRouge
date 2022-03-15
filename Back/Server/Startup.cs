@@ -59,8 +59,8 @@ namespace Server
                 options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
                 options.JsonSerializerOptions.WriteIndented = true;
             });
-        }
             services.AddTransient<IUsersService, UsersService>();
+        }
 
 
 
