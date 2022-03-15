@@ -55,11 +55,10 @@ export class DetailAnimeComponent implements OnInit {
    */
   async getAnimeInfosInOurBack(id: number) {
     await this.serviceAnime.getAnime(id).subscribe((dataBack: any) => {
-      console.log(dataBack);
+      //console.log(dataBack);
       if(dataBack != null){
-        this.ourDataAnime = new Anime();
-        this.ourDataAnime.id = dataBack.id;
-        this.ourDataAnime.reviews = dataBack.reviews.$values;
+        //this.ourDataAnime = new Anime();
+        this.ourDataAnime = dataBack
       }
       console.log(this.ourDataAnime);
     }
