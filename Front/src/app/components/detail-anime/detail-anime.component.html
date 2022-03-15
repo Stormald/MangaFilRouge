@@ -10,7 +10,8 @@
                     <div matTooltip="{{ TransformTimeStamp(dataAnime?.data.Media.nextAiringEpisode?.airingAt) }}" *ngIf="dataAnime?.data.Media.nextAiringEpisode" class="comment">
                         <i class="fa fa-calendar"></i> Next Episode N°{{dataAnime?.data.Media.nextAiringEpisode.episode}} in {{jour}} days {{heure}}h {{min}}m
                     </div> 
-                </div> 
+                </div>
+                <app-modal-add-to-my-list [anime] = dataAnime></app-modal-add-to-my-list>
                 <!-- Anime SideBAR Begin --> 
                 <div class="SideBar">
                     <div *ngIf="dataAnime?.data.Media.title" class="elementSideBAr">
@@ -163,11 +164,7 @@
                              <!-- Recommandation Section END --> 
                         </div>
                     </div> 
-                    <div class="anime__details__btn"> 
-                        <a href="#" class="follow-btn">
-                            <i class="fa fa-heart-o"></i> Add to List
-                        </a> 
-                    </div> 
+                    
                 </div> 
             </div> 
         </div> 

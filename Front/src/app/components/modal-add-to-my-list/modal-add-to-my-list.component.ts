@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -7,6 +7,8 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./modal-add-to-my-list.component.css']
 })
 export class ModalAddToMyListComponent implements OnInit {
+
+  @Input() anime : any;
 
   constructor(config: NgbModalConfig, private modalService: NgbModal) {
     config.backdrop = 'static';
