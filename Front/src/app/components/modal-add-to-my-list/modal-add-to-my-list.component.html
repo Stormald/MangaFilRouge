@@ -16,40 +16,38 @@
       <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
     </div>
     <div class="modal-body">
-      <!-- <div class="row">
-         <div class="col">
-          <div ngbDropdown class="d-inline-block">
-            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Status</button>
-            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-              <button ngbDropdownItem>Action - 1</button>
-              <button ngbDropdownItem>Another Action</button>
-              <button ngbDropdownItem>Something else is here</button>
-            </div>
-          </div>
-        </div> -->
-        <div class="row Marg"> 
-            <div class="col-lg-6 col-md-6 ">
-                 <ul>
-                    <li class="liCenter" *ngIf="anime?.data.Media.type"><span>Type:</span> {{anime?.data.Media.type}}</li>
-                    <li *ngIf="anime?.data.Media.format"><span>Format:</span> {{anime?.data.Media.format}}</li>
-                    <li *ngIf="anime?.data.Media.status"><span>Status:</span> {{anime?.data.Media.status}}</li>
-                </ul>
-            </div> 
-            <div class="col-lg-6 col-md-6"> 
-                <ul> 
-                    <li *ngIf="anime?.data.Media.episodes"><span>Episodes:</span> {{anime?.data.Media.episodes}}</li> 
-                    <li *ngIf="anime?.data.Media.duration"><span>Duration:</span> {{anime?.data.Media.duration}} min</li> 
-                    <li *ngIf="anime?.data.Media.seasonInt"><span>Saison:</span> {{anime?.data.Media.season}} {{anime?.data.Media.seasonYear}}</li> 
-
-                </ul> 
-            </div> 
-            <div>
-                
-            </div>
-        </div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="addToMyList(anime)">ADD TO MY LIST</button>
+        <form [formGroup]="FormAddList">
+            <div class="row">
+                <div ngbDropdown class="d-inline-block MargTop5">
+                    <label for="status">Status : </label>
+                    <select class="btn btn-outline-dark select-form MargLeft" id="status" formControlName="StatusControl">
+                        <option [ngValue]="null" placeholder="Status" disabled hidden></option>
+                        <option>Action - 1</option>
+                        <option>Another Action</option>
+                        <option>Something else is here</option>
+                    </select>
+                 </div>
+             </div>
+             <div class="MargTop5">
+                <label for="privacy">Privacy :  </label>
+             <input class="MargLeft" type="checkbox" id="privacy" formControlName="checked" />  
+             </div>
+             <div class="MargTop5">
+                <label for="favorites">Add to favorites :  </label>
+             <input class="MargLeft" type="checkbox" id="favorites" formControlName="favorites" />  
+             </div>
+             <div class="MargTop5">
+                <label for="Rate">Score :  </label>
+                <ngb-rating class="MargLeft" [(rate)]="currentRate" id="Rate" formControlName="Rate"></ngb-rating> 
+                {{currentRate}} / 10
+             </div>
+             <div class="MargTop5">
+                <label for="Episode">Episode Progress :  </label>
+                <input class="MargLeft" id="Episode" type="number" formControlName="Episode">
+             </div>
+              
+            <button type="button" class="btn btn-dark btnAdd" (click)="addToMyList(anime)">ADD TO MY LIST</button>
+        </form>
     </div>
   </ng-template>
   

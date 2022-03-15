@@ -24,3 +24,15 @@
     text-align: center;
     font-size: x-large;
 }
+.MargLeft{
+    margin-left: 3%;
+}
+
+.MargTop5{
+    margin-top: 2%;
+}
+
+.btnAdd{
+    margin-left: 80%;
+    color: white;
+}
