@@ -33,7 +33,7 @@ namespace Server.Repositories.MariaDB
 
         public IEnumerable<CategoryListPerso> GetCategoryListPersos()
         {
-            throw new NotImplementedException();
+            return this.context.CategoryListPersos.ToList();
         }
 
         public CategoryListPerso UpdateCategoryListPerso(CategoryListPerso categoryListPerso)

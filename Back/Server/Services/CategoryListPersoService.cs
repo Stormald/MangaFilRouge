@@ -33,7 +33,7 @@ namespace Server.Services
 
         public IEnumerable<ICategoryListPerso> GetCategoryListPersos()
         {
-            throw new NotImplementedException();
+            return this.repo.GetCategoryListPersos();
         }
 
         public ICategoryListPerso UpdateCategoryListPerso(CategoryListPerso categoryListPerso)
