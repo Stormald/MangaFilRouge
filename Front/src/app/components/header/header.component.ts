@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { User } from 'src/app/models';
+import { AuthService } from 'src/app/services';
 
 @Component({
   selector: 'app-header',
@@ -13,9 +15,19 @@ import { switchMap } from 'rxjs/operators';
 export class HeaderComponent implements OnInit {
 
   searchAnimeControl = new FormControl();
+  public user: User;
 
-  constructor(private route : ActivatedRoute, private router : Router) { }
+  constructor(private route : ActivatedRoute,
+    private router : Router,
+    private authenticationService: AuthService)
+    {
+      this.authenticationService.currentUser.subscribe(x => this.user = x);
+    }
 
   ngOnInit(): void {
+  }
+
+  logout() {
+    this.authenticationService.logout();
   }
 }
