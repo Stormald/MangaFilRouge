@@ -16,25 +16,24 @@
       <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
     </div>
     <div class="modal-body">
+
         <form [formGroup]="FormAddList">
             <div class="row">
                 <div ngbDropdown class="d-inline-block MargTop5">
                     <label for="status">Status : </label>
                     <select class="btn btn-outline-dark select-form MargLeft" id="status" formControlName="StatusControl">
                         <option [ngValue]="null" placeholder="Status" disabled hidden></option>
-                        <option>Action - 1</option>
-                        <option>Another Action</option>
-                        <option>Something else is here</option>
+                        <option *ngFor="let status of dataStatus; let i = index">{{status.label}}</option>
                     </select>
                  </div>
              </div>
              <div class="MargTop5">
                 <label for="privacy">Privacy :  </label>
-             <input class="MargLeft" type="checkbox" id="privacy" formControlName="checked" />  
+                <input class="MargLeft" type="checkbox" id="privacy" formControlName="checked" />  
              </div>
              <div class="MargTop5">
                 <label for="favorites">Add to favorites :  </label>
-             <input class="MargLeft" type="checkbox" id="favorites" formControlName="favorites" />  
+                <input class="MargLeft" type="checkbox" id="favorites" formControlName="favorites" />  
              </div>
              <div class="MargTop5">
                 <label for="Rate">Score :  </label>
