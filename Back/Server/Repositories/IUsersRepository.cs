@@ -1,4 +1,5 @@
-﻿using Server.Models;
+﻿using Server.Interfaces;
+using Server.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +11,12 @@ namespace Server.Repositories
     {
         IEnumerable<User> FindAll();
 
-        User FindById(string id);
+        User FindById(int id);
 
         void Add(User user);
 
         void Update(User user);
 
-        void Delete(string id);
+        void Delete(int id);
     }
 }

@@ -3,6 +3,8 @@ using Server.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Server.Services
@@ -18,44 +20,24 @@ namespace Server.Services
 
         public List<User> GeyAllUser()
         {
-            try
-            {
-                List<User> users = this.usersRepository.FindAll() as List<User>;
+            List<User> users = this.usersRepository.FindAll() as List<User>;
 
-                return users;
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
+            return users;
         }
 
-        public User GetUserById(string id)
+        public User GetUserById(int id)
         {
-            try
-            {
-                User user = this.usersRepository.FindById(id);
+            User user = this.usersRepository.FindById(id);
 
-                return user;
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
+            return user;
         }
 
         public User CreateUser(User user)
         {
-            try
-            {
-                this.usersRepository.Add(user);
+            user.Password = ProtectPassword(user.Password);
+            this.usersRepository.Add(user);
 
-                return user;
-            }
-            catch (Exception e)
-            {
-                throw new Exception (e.Message);
-            }
+            return user;
         }
 
         public User UpdateUser(User user)
@@ -63,9 +45,16 @@ namespace Server.Services
             throw new NotImplementedException();
         }
 
-        public string DeleteUser(string id)
+        public string DeleteUser(int id)
         {
             throw new NotImplementedException();
+        }
+
+        private static string ProtectPassword(string clearPassword)
+        {
+            byte[] bytes = Encoding.UTF8.GetBytes(clearPassword);
+            byte[] protectedBytes = ProtectedData.Protect(bytes, null, DataProtectionScope.CurrentUser);
+            return Convert.ToBase64String(protectedBytes);
         }
     }
 }

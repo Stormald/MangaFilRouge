@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AuthService } from 'src/app/services';
+import { AlertService, AuthService } from 'src/app/services';
 
 @Component({
   selector: 'app-register',
@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
         private router: Router,
         private authenticationService: AuthService,
         // private userService: UsersService,
-        // private alertService: AlertService
+        private alertService: AlertService
     ) {
         // redirect to home if already logged in
         if (this.authenticationService.currentUserValue) {
@@ -31,9 +31,8 @@ export class RegisterComponent implements OnInit {
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
-            firstName: ['', Validators.required],
-            lastName: ['', Validators.required],
-            username: ['', Validators.required],
+            email: ['', Validators.required],
+            pseudo: ['', Validators.required],
             password: ['', [Validators.required, Validators.minLength(6)]]
         });
     }
@@ -45,7 +44,7 @@ export class RegisterComponent implements OnInit {
         this.submitted = true;
 
         // reset alerts on submit
-        // this.alertService.clear();
+        this.alertService.clear();
 
         // stop here if form is invalid
         if (this.registerForm.invalid) {
@@ -57,11 +56,11 @@ export class RegisterComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                    // this.alertService.success('Registration successful', true);
+                    this.alertService.success('Registration successful', true);
                     this.router.navigate(['/login']);
                 },
                 error => {
-                    // this.alertService.error(error);
+                    this.alertService.error(error);
                     this.loading = false;
                 });
     }

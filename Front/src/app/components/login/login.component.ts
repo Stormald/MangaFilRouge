@@ -54,12 +54,13 @@ export class LoginComponent implements OnInit {
             return;
         }
 
+        var userCredential = { login:this.f.username.value, password:this.f.password.value};        
+
         this.loading = true;
-        this.authenticationService.login(this.f.username.value, this.f.password.value)
+        this.authenticationService.login(userCredential)
             .pipe(first())
             .subscribe(
                 data => {
-                    console.log(data);
                     this.router.navigate(['/']);
                 },
                 error => {
