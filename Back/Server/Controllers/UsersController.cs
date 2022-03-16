@@ -5,6 +5,8 @@ using Server.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Server.Controllers
@@ -61,7 +63,7 @@ namespace Server.Controllers
         public IActionResult Autenthicate(UserCredential userCredential)
         {
             var currentUser = this.usersService.GeyAllUser()
-                .FirstOrDefault( user => user.Email == userCredential.Login && user.Password == userCredential.Password);
+                .FirstOrDefault( user => user.Email == userCredential.Login && UnprotectPassword(user.Password) == userCredential.Password);
 
             if (currentUser == null)
             {
@@ -69,6 +71,13 @@ namespace Server.Controllers
             }
 
             return this.Ok(currentUser);
+        }
+
+        static string UnprotectPassword(string protectedPassword)
+        {
+            byte[] protectedBytes = Convert.FromBase64String(protectedPassword);
+            byte[] bytes = ProtectedData.Unprotect(protectedBytes, null, DataProtectionScope.CurrentUser);
+            return Encoding.UTF8.GetString(bytes);
         }
     }
 

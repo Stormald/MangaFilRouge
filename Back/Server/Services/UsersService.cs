@@ -3,6 +3,8 @@ using Server.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Server.Services
@@ -32,6 +34,7 @@ namespace Server.Services
 
         public User CreateUser(User user)
         {
+            user.Password = ProtectPassword(user.Password);
             this.usersRepository.Add(user);
 
             return user;
@@ -45,6 +48,13 @@ namespace Server.Services
         public string DeleteUser(int id)
         {
             throw new NotImplementedException();
+        }
+
+        private static string ProtectPassword(string clearPassword)
+        {
+            byte[] bytes = Encoding.UTF8.GetBytes(clearPassword);
+            byte[] protectedBytes = ProtectedData.Protect(bytes, null, DataProtectionScope.CurrentUser);
+            return Convert.ToBase64String(protectedBytes);
         }
     }
 }
