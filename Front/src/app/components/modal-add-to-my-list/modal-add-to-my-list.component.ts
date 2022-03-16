@@ -37,13 +37,13 @@ export class ModalAddToMyListComponent implements OnInit {
 
   addToMyList(obj) {
     let IdAnimeToSave  = obj.data.Media.id;
-    console.log(IdAnimeToSave);
+    //console.log(IdAnimeToSave);
     let StatusControl = this.FormAddList.get("StatusControl").value;
     let checked = this.FormAddList.get("checked").value;
     let rate = this.FormAddList.get("Rate").value;
     let episode = this.FormAddList.get("Episode").value;
     let favorites = this.FormAddList.get("favorites").value;
-    console.log(StatusControl + " " + checked + " " + rate +" " + favorites + " " +episode);
+    //console.log(StatusControl + " " + checked + " " + rate +" " + favorites + " " +episode);
     
     //AJOUTER LA REQUETE POUR ADD TO MY LIST BACK
     

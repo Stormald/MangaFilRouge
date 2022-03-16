@@ -35,6 +35,10 @@ namespace Server.Repositories.MariaDB
             if(anime != null)
             {
                 anime.Reviews = this.context.Reviews.Where(r => r.AnimeId == id).ToList();
+                foreach (Review rev in anime.Reviews)
+                {
+                    rev.User = this.context.Users.FirstOrDefault(user => user.Id == rev.UserId);
+                }
             }
             return anime;
         }

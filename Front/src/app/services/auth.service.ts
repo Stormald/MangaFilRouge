@@ -26,7 +26,7 @@ export class AuthService {
   login(userCredential: any) {
     return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, userCredential )
     .pipe(map((user) => {
-      console.log(user);
+      //console.log(user);
       
         if (user !== null) {
             // store user details and basic auth credentials in local storage to keep user logged in between page refreshes

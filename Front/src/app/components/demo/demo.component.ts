@@ -24,7 +24,7 @@ export class DemoComponent implements OnInit {
     
     var anime = await this.nom.SEARCHmediasWithoutToken("One Piece", "ANIME", 1, 25);
     //anime = await this.nom.GETmediaWithoutToken(110789);
-    console.log(anime);
+    //console.log(anime);
   }
 }
 

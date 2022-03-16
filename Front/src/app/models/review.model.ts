@@ -4,6 +4,7 @@ export class Review {
     likes: number;
     dislikes: number;
     scoreReview: number;
+    user: any;
     userId: number;
     animeId: number;
 }
