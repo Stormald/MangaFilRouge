@@ -86,15 +86,23 @@ export class DetailAnimeComponent implements OnInit {
   }
 
   addReview() {
-    let review = new Review();
-    review.scoreReview = this.reviewForm.get("scoreControl").value;
-    review.text = this.reviewForm.get("textControl").value;
-    review.userId = 1;
-    review.animeId = this.id;
+    let user = JSON.parse(sessionStorage.getItem('currentUser'));
+    if(user != null){
+      let review = new Review();
+      review.scoreReview = this.reviewForm.get("scoreControl").value;
+      review.text = this.reviewForm.get("textControl").value;
+      review.userId = 1;
+      review.animeId = user.id;
+  
+      this.addAnimeIfNeccessary(review);
+  
+      this.reviewForm.reset();
+    }
+    else{
+      alert("You need to be logged in order to post a review.");
+    }
 
-    this.addAnimeIfNeccessary(review);
 
-    this.reviewForm.reset();
   }
 
 
