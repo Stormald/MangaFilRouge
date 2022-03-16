@@ -60,7 +60,7 @@ export class DetailAnimeComponent implements OnInit {
         //this.ourDataAnime = new Anime();
         this.ourDataAnime = dataBack
       }
-      console.log(this.ourDataAnime);
+      //console.log(this.ourDataAnime);
     }
     );
   }
@@ -179,7 +179,7 @@ export class DetailAnimeComponent implements OnInit {
    * @param id 
    */
   goToDetailAnime(id: number) {
-    console.log(id);
+    //console.log(id);
     this.router.navigate(['/animes', id]);
   }
 
@@ -187,10 +187,10 @@ export class DetailAnimeComponent implements OnInit {
    * @description Augmente le nombre de recommandations de 5 en 5 jusqu'au max et enleve le btn en passant MoreRecon à vrai
    */
   MoreReco() {
-    console.log(this.dataAnime.data.Media.recommendations.nodes.length);
+    //console.log(this.dataAnime.data.Media.recommendations.nodes.length);
     if (this.NbRecommandation + 5 < this.dataAnime.data.Media.recommendations.nodes.length) {
       this.NbRecommandation = this.NbRecommandation + 5;
-      console.log(this.NbRecommandation);
+      //console.log(this.NbRecommandation);
 
     } else {
       this.NbRecommandation = this.dataAnime.data.Media.recommendations.nodes.length;
@@ -199,10 +199,10 @@ export class DetailAnimeComponent implements OnInit {
   }
 
   MoreReview() {
-    console.log(this.dataAnime.data.Media.reviews.edges.length);
+    //console.log(this.dataAnime.data.Media.reviews.edges.length);
     if (this.NbReview + 5 < this.dataAnime.data.Media.reviews.edges.length) {
       this.NbReview = this.NbReview + 5;
-      console.log(this.NbReview);
+      //console.log(this.NbReview);
 
     } else {
       this.NbReview = this.dataAnime.data.Media.reviews.edges.length;
