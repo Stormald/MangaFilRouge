@@ -4,6 +4,7 @@ import { DetailAnimeComponent } from './components/detail-anime/detail-anime.com
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ScheduleComponent } from './components/schedule/schedule.component';
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
@@ -11,6 +12,8 @@ const routes: Routes = [
   {path:"animes/:id", component: DetailAnimeComponent},
   {path:"login", component: LoginComponent},
   {path:"register", component: RegisterComponent},
+  {path:"schedule", component: ScheduleComponent},
+  {path:"schedule", component: ScheduleComponent, pathMatch:'full'}
 ];
 
 @NgModule({
