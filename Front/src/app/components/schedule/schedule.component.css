@@ -1,0 +1,17 @@
+
+h3{
+    color: #fff;
+    font-weight: 700 !important;
+    line-height: 26px;
+    font-size: 30px;
+}
+
+.link_to_detail{
+    text-align:  center;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.navig{
+    margin: 10px;
+}
