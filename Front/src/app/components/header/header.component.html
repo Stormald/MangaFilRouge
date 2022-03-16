@@ -35,7 +35,9 @@
             </div>
             <div class="col-lg-1">
                 <div class="header__right">
-                    <a href="#" class="search-switch"><span class="icon_search"></span></a>
+                    <button *ngIf="user" class="btn btn-danger btn-sm" (click)="logout()">
+                        <i class="fas fa-user"></i>
+                        <i class="fas fa-sign-out-alt"></i><br><small>Se déconnecter</small></button>
                     <a [routerLink]="['/login']"><span class="icon_profile"></span></a>
                 </div>
             </div>
