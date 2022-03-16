@@ -9,8 +9,7 @@
                     <img class="set-bg" src="{{anime?.coverImage.extraLarge}}">
                 </a>
                 <div matTooltip="{{ TransformTimeStamp(anime?.nextAiringEpisode.airingAt) }}" *ngIf="anime?.nextAiringEpisode" class="fa en-cours"></div>
-                <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                <div class="view"><i class="fa fa-eye"></i> {{anime?.popularity}}</div>
             </div>
             <h5 class="link_to_detail"><a class="btn btn-outline-dark" (click)="goToDetailAnime(anime.id)">{{anime.title.romaji}}</a></h5>
         </div>

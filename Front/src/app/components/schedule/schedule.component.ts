@@ -36,7 +36,7 @@ export class ScheduleComponent implements OnInit {
     if(this.currentDate == null){
       this.currentDate = new Date(new Date().toDateString());
     }
-    this.inSixDayDate.setDate(this.currentDate.getDate()+6);
+    this.inSixDayDate.setDate(this.currentDate.getDate()+7);
   }
 
   ngOnInit(): void {
@@ -162,9 +162,9 @@ async getAnimes() {
             this.week.push({index: dateSortieEpisode.getDay(), name: this.dayOfTheWeek[dateSortieEpisode.getDay()], airingMedia: [schedule], date: dateSortieEpisode});
           }
           break;
-        default:
+        /*default:
           console.log(`Problem with ${dateSortieEpisode.getDate()} not in ${day0.getDate()} to ${day6.getDate()} : ${dateSortieEpisode.toLocaleDateString()}.`);
-      }
+        */     }
     }
     }
     this.page = data.data.Page.pageInfo.currentPage+1;
