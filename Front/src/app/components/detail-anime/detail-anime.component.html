@@ -107,7 +107,7 @@
                                         <h5>Reviews</h5>
                                     </div>
                                     <div *ngFor="let review of ourDataAnime?.reviews; let i = index" class="anime__review__item">
-                                        <div *ngIf="i<ourDataAnime?.reviews.length">
+                                        <div *ngIf="i<NbReview">
                                             <div class="anime__review__item__pic">
                                                 <img src="assets/img/review-1.jpg" alt="">
                                             </div>
@@ -119,7 +119,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <a *ngIf="!MoreRev" class="read-more.content-read-more more-link read-more read-more.content-read-more:hover more-link:hover read-more:hover"  type="button" (click)="MoreReview()" >
+                                        <a *ngIf="MoreRev" class="read-more.content-read-more more-link read-more read-more.content-read-more:hover more-link:hover read-more:hover"  type="button" (click)="MoreReview()" >
                                             Look for more reviews
                                          </a>
                                     </div>
@@ -146,7 +146,7 @@
                                     <div class="section-title">
                                         <h5>you might like...</h5>
                                     </div>
-                                    <div *ngFor="let recommendations of dataAnime?.data.Media.recommendations.nodes; let i = index" >
+                                    <div *ngFor="let recommendations of dataAnime?.data.Media.recommendations?.nodes; let i = index" >
                                         <div *ngIf="i<NbRecommandation" >
                                             <div  class="product__sidebar__view__item set-bgReco" [ngStyle]="{ 'background-image': 'url(' + recommendations.mediaRecommendation.coverImage.large + ')'}">
                                             </div>
@@ -156,7 +156,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <a *ngIf="!MoreRecom" class="read-more.content-read-more more-link read-more read-more.content-read-more:hover more-link:hover read-more:hover"  type="button" (click)="MoreReco()" >
+                                        <a *ngIf="MoreRecom" class="read-more.content-read-more more-link read-more read-more.content-read-more:hover more-link:hover read-more:hover"  type="button" (click)="MoreReco()" >
                                             Look for more recommendations
                                          </a>
                                     </div>
