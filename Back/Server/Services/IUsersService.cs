@@ -10,12 +10,12 @@ namespace Server.Services
     {
         List<User> GeyAllUser();
 
-        User GetUserById(string id);
+        User GetUserById(int id);
 
         User CreateUser(User user);
 
         User UpdateUser(User user);
 
-        string DeleteUser(string id);
+        string DeleteUser(int id);
     }
 }

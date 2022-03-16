@@ -58,11 +58,11 @@ export class ListeComponent implements OnInit {
     }
 
     this.mediaType = "ANIME";
-    await this.nom.SEARCHmediasWithoutToken(this.searchName, this.mediaType, 1, 12, this.myFilter).then(data => {
+    await this.nom.SEARCHmediasWithoutToken(this.searchName, this.mediaType, 1, 16, this.myFilter).then(data => {
       this.liste = data.data.Page.media;
       this.page = data.data.Page.pageInfo.currentPage;
       this.lastPage = data.data.Page.pageInfo.lastPage;
-      console.log(data);
+      //console.log(data);
     }
     );
 
@@ -72,7 +72,7 @@ export class ListeComponent implements OnInit {
 
   onScrollDown(ev: any) {
     if (this.page != this.lastPage) {
-      console.log("scrolled down!!", ev);
+      //console.log("scrolled down!!", ev);
       //this.cpt++;
       this.appendItems();
     }
@@ -82,13 +82,14 @@ export class ListeComponent implements OnInit {
     if (this.page == 1) {
       this.page = 3;
     }
-    else
+    else{
       this.page++;
-      console.log("search : "+ this.searchName);
-    await this.nom.SEARCHmediasWithoutToken(this.searchName, this.mediaType, this.page, 6, this.myFilter).then(data => {
+    }
+      //console.log("search : "+ this.searchName);
+    await this.nom.SEARCHmediasWithoutToken(this.searchName, this.mediaType, this.page, 8, this.myFilter).then(data => {
       this.liste = this.liste.concat(data.data.Page.media);
       this.lastPage = data.data.Page.pageInfo.lastPage;
-      console.log(this.liste);
+      //console.log(this.liste);
     });
   }
 

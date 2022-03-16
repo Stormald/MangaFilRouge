@@ -1,4 +1,5 @@
-﻿using Server.Models;
+﻿using Server.Interfaces;
+using Server.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,24 +9,32 @@ namespace Server.Repositories
 {
     public class UsersRepository : IUsersRepository
     {
-        public void Add(User user)
+        private readonly mangafilrouge_bddContext context;
+
+        public UsersRepository(mangafilrouge_bddContext context)
         {
-            throw new NotImplementedException();
+            this.context = context;
         }
 
-        public void Delete(string id)
+        public void Add(User user)
         {
-            throw new NotImplementedException();
+            this.context.Users.Add(user);
+            this.context.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            this.context.Users.Remove(this.FindById(id));
         }
 
         public IEnumerable<User> FindAll()
         {
-            throw new NotImplementedException();
+            return this.context.Users.ToList();
         }
 
-        public User FindById(string id)
+        public User FindById(int id)
         {
-            throw new NotImplementedException();
+            return this.context.Users.FirstOrDefault(user => user.Id == id);
         }
 
         public void Update(User user)

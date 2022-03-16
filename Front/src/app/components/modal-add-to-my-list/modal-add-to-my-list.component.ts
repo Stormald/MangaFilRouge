@@ -73,7 +73,6 @@ export class ModalAddToMyListComponent implements OnInit {
     this.favorites = this.FormAddList.get("favorites").value;
     console.log(this.StatusControl + " " + this.checked + " " + this.rate +" " + this.favorites + " " +this.episode);
     
-    
     //AJOUTER LA REQUETE POUR ADD TO MY LIST BACK
     
   }

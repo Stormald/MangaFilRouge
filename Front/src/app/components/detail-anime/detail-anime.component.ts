@@ -58,9 +58,13 @@ export class DetailAnimeComponent implements OnInit {
       //console.log(dataBack);
       if(dataBack != null){
         //this.ourDataAnime = new Anime();
-        this.ourDataAnime = dataBack
+        this.ourDataAnime = dataBack;
+        console.log(this.ourDataAnime.reviews.length);
+        if (this.NbReview < this.ourDataAnime.reviews.length) {
+          this.MoreRev = true;
+        }
       }
-      console.log(this.ourDataAnime);
+      //console.log(this.ourDataAnime);
     }
     );
   }
@@ -86,15 +90,23 @@ export class DetailAnimeComponent implements OnInit {
   }
 
   addReview() {
-    let review = new Review();
-    review.scoreReview = this.reviewForm.get("scoreControl").value;
-    review.text = this.reviewForm.get("textControl").value;
-    review.userId = 1;
-    review.animeId = this.id;
+    let user = JSON.parse(sessionStorage.getItem('currentUser'));
+    if(user != null){
+      let review = new Review();
+      review.scoreReview = this.reviewForm.get("scoreControl").value;
+      review.text = this.reviewForm.get("textControl").value;
+      review.userId = user.id;
+      review.animeId = this.id;
+  
+      this.addAnimeIfNeccessary(review);
+  
+      this.reviewForm.reset();
+    }
+    else{
+      alert("You need to be logged in order to post a review.");
+    }
 
-    this.addAnimeIfNeccessary(review);
 
-    this.reviewForm.reset();
   }
 
 
@@ -109,6 +121,9 @@ export class DetailAnimeComponent implements OnInit {
         this.dataAnime = dataR;
         this.TransformNextAiringData(dataR);
         this.ReadMoreControl(dataR.data.Media.description);
+        if (this.NbRecommandation < this.dataAnime.data.Media.recommendations.nodes.length) {
+          this.MoreRecom = true;
+        }
       }
       );
   }
@@ -171,7 +186,7 @@ export class DetailAnimeComponent implements OnInit {
    * @param id 
    */
   goToDetailAnime(id: number) {
-    console.log(id);
+    //console.log(id);
     this.router.navigate(['/animes', id]);
   }
 
@@ -179,26 +194,24 @@ export class DetailAnimeComponent implements OnInit {
    * @description Augmente le nombre de recommandations de 5 en 5 jusqu'au max et enleve le btn en passant MoreRecon à vrai
    */
   MoreReco() {
-    console.log(this.dataAnime.data.Media.recommendations.nodes.length);
-    if (this.NbRecommandation + 5 < this.dataAnime.data.Media.recommendations.nodes.length) {
+    //console.log(this.dataAnime.data.Media.recommendations.nodes.length);
+    if (this.NbRecommandation + 5 < this.dataAnime.data.Media.recommendations?.nodes.length) {
       this.NbRecommandation = this.NbRecommandation + 5;
-      console.log(this.NbRecommandation);
-
+      //console.log(this.NbRecommandation);
     } else {
-      this.NbRecommandation = this.dataAnime.data.Media.recommendations.nodes.length;
-      this.MoreRecom = true;
+      this.NbRecommandation = this.dataAnime.data.Media.recommendations?.nodes.length;
+      this.MoreRecom = false;
     }
   }
 
   MoreReview() {
-    console.log(this.dataAnime.data.Media.reviews.edges.length);
-    if (this.NbReview + 5 < this.dataAnime.data.Media.reviews.edges.length) {
+    //console.log(this.dataAnime.data.Media.reviews.edges.length);
+    if (this.NbReview + 5 < this.ourDataAnime?.reviews.length) {
       this.NbReview = this.NbReview + 5;
-      console.log(this.NbReview);
-
+      //console.log(this.NbReview);
     } else {
-      this.NbReview = this.dataAnime.data.Media.reviews.edges.length;
-      this.MoreRev = true;
+      this.NbReview = this.ourDataAnime?.reviews.length;
+      this.MoreRev = false;
     }
   }
 
