@@ -24,7 +24,7 @@ namespace Server.Repositories
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            this.context.Users.Remove(this.FindById(id));
         }
 
         public IEnumerable<User> FindAll()

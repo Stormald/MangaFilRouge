@@ -42,12 +42,14 @@ namespace Server.Services
 
         public User UpdateUser(User user)
         {
-            throw new NotImplementedException();
+            this.usersRepository.Update(user);
+            return user;
         }
 
         public string DeleteUser(int id)
         {
-            throw new NotImplementedException();
+            this.usersRepository.Delete(id);
+            return "user succefully deleted.";
         }
 
         private static string ProtectPassword(string clearPassword)
