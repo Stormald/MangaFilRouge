@@ -24,5 +24,11 @@ namespace Server.Controllers
         {
             return this.service.GetCategoryListPerso(id);
         }
+
+        [HttpGet]
+        public IEnumerable<ICategoryListPerso> GetCategoryListPerso()
+        {
+            return this.service.GetCategoryListPersos();
+        }
     }
 }
