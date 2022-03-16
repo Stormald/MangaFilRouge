@@ -3,7 +3,7 @@
     <a class="btn btn-light btn-outline-dark float-right navig" [routerLink]="['/schedule', { date: this.addSevenDays() }]">Next week</a>
 </div>
 <div *ngFor="let day of week" class="week row">
-    <h3>{{day.name}}</h3>
+    <h3>{{day.name}} {{day.date.getDate()}}/{{day.date.getMonth()+1}}/{{day.date.getFullYear()}}</h3>
     <div *ngFor="let airing of day.airingMedia" class="col-lg-2 col-md-2 col-sm-2">
         <div class="product__item">
             <div class="product__item__pic">

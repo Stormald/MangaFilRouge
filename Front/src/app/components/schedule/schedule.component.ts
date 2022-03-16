@@ -111,7 +111,7 @@ async getAnimes() {
             this.week[0].airingMedia.push(schedule);
           }
           else{
-            this.week.push({index: dateSortieEpisode.getDay(), name: this.dayOfTheWeek[dateSortieEpisode.getDay()], airingMedia: [schedule]});
+            this.week.push({index: dateSortieEpisode.getDay(), name: this.dayOfTheWeek[dateSortieEpisode.getDay()], airingMedia: [schedule], date: dateSortieEpisode});
           }
           break;
         case day1.getDate():
@@ -119,7 +119,7 @@ async getAnimes() {
             this.week[1].airingMedia.push(schedule);
           }
           else{
-            this.week.push({index: dateSortieEpisode.getDay(), name: this.dayOfTheWeek[dateSortieEpisode.getDay()], airingMedia: [schedule]});
+            this.week.push({index: dateSortieEpisode.getDay(), name: this.dayOfTheWeek[dateSortieEpisode.getDay()], airingMedia: [schedule], date: dateSortieEpisode});
           }
           break;
         case day2.getDate():
@@ -127,7 +127,7 @@ async getAnimes() {
             this.week[2].airingMedia.push(schedule);
           }
           else{
-            this.week.push({index: dateSortieEpisode.getDay(), name: this.dayOfTheWeek[dateSortieEpisode.getDay()], airingMedia: [schedule]});
+            this.week.push({index: dateSortieEpisode.getDay(), name: this.dayOfTheWeek[dateSortieEpisode.getDay()], airingMedia: [schedule], date: dateSortieEpisode});
           }
           break;
         case day3.getDate():
@@ -135,7 +135,7 @@ async getAnimes() {
             this.week[3].airingMedia.push(schedule);
           }
           else{
-            this.week.push({index: dateSortieEpisode.getDay(), name: this.dayOfTheWeek[dateSortieEpisode.getDay()], airingMedia: [schedule]});
+            this.week.push({index: dateSortieEpisode.getDay(), name: this.dayOfTheWeek[dateSortieEpisode.getDay()], airingMedia: [schedule], date: dateSortieEpisode});
           }
           break;
         case day4.getDate():
@@ -143,7 +143,7 @@ async getAnimes() {
             this.week[4].airingMedia.push(schedule);
           }
           else{
-            this.week.push({index: dateSortieEpisode.getDay(), name: this.dayOfTheWeek[dateSortieEpisode.getDay()], airingMedia: [schedule]});
+            this.week.push({index: dateSortieEpisode.getDay(), name: this.dayOfTheWeek[dateSortieEpisode.getDay()], airingMedia: [schedule], date: dateSortieEpisode});
           }
           break;
         case day5.getDate():
@@ -151,7 +151,7 @@ async getAnimes() {
             this.week[5].airingMedia.push(schedule);
           }
           else{
-            this.week.push({index: dateSortieEpisode.getDay(), name: this.dayOfTheWeek[dateSortieEpisode.getDay()], airingMedia: [schedule]});
+            this.week.push({index: dateSortieEpisode.getDay(), name: this.dayOfTheWeek[dateSortieEpisode.getDay()], airingMedia: [schedule], date: dateSortieEpisode});
           }
           break;
         case day6.getDate():
@@ -159,7 +159,7 @@ async getAnimes() {
             this.week[6].airingMedia.push(schedule);
           }
           else{
-            this.week.push({index: dateSortieEpisode.getDay(), name: this.dayOfTheWeek[dateSortieEpisode.getDay()], airingMedia: [schedule]});
+            this.week.push({index: dateSortieEpisode.getDay(), name: this.dayOfTheWeek[dateSortieEpisode.getDay()], airingMedia: [schedule], date: dateSortieEpisode});
           }
           break;
         default:
