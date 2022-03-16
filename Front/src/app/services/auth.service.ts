@@ -24,9 +24,11 @@ export class AuthService {
   }
 
   login(userCredential: any) {
-    return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, { userCredential })
+    return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, userCredential )
     .pipe(map((user) => {
-        if (user.status === 'success') {
+      console.log(user);
+      
+        if (user !== null) {
             // store user details and basic auth credentials in local storage to keep user logged in between page refreshes
             user.authdata = window.btoa(userCredential.login + ':' + userCredential.password);
             sessionStorage.setItem('currentUser', JSON.stringify(user));
@@ -46,6 +48,6 @@ export class AuthService {
   }
 
   register(user: User) {
-    return this.http.post(`${environment.apiUrl}/users/register`, user);
+    return this.http.post(`${environment.apiUrl}/users`, user);
   }
 }
