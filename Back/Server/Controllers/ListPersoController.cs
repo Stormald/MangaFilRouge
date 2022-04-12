@@ -32,7 +32,7 @@ namespace Server.Controllers
             return this.service.GetListPersos();
         }
 
-        [HttpGet("/User/{id}")]
+        [HttpGet("User/{id}")]
         public IEnumerable<IListPerso> GetListPersosByUserId(int id)
         {
             return this.service.GetListPersosByUserId(id);

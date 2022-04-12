@@ -8,6 +8,7 @@ import { ListPersoService } from 'src/app/services/listPerso.service';
 import { AnimeService } from 'src/app/services/anime.service';
 import { Anime } from 'src/app/models/anime.model';
 
+
 @Component({
   selector: 'app-modal-add-to-my-list',
   templateUrl: './modal-add-to-my-list.component.html',
@@ -80,6 +81,8 @@ export class ModalAddToMyListComponent implements OnInit {
       listPerso.animeId = obj.data.Media.id;
 
       this.addAnimeIfNeccessary(listPerso);
+
+      document.getElementById("closeModalButton").click();
     }
     else{
       alert("You need to be logged in order to add an anime to your list.");

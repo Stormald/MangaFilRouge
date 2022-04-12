@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 # Infos API Anilist Wrapper ouranilist-api : 1.0.15
 
- - await nom.SEARCHmediasWithoutToken("search" : string, "MEDIATYPE" : string, page : int, perPage : int, filters : [Key]:Value)
+ - await api.SEARCHmediasWithoutToken("search" : string, "MEDIATYPE" : string, page : int, perPage : int, filters : [Key]:Value)
 
 ex : 
 
@@ -13,14 +13,14 @@ let myFilter = {
     status: "RELEASING"
   }; 
   
-await this.nom.SEARCHmediasWithoutToken("One Piece, "ANIME", 1, 15, myFilter);
+await this.api.SEARCHmediasWithoutToken("One Piece, "ANIME", 1, 15, myFilter);
 
 
-- await nom.GETmediaWithoutToken(id : int)
+- await api.GETmediaWithoutToken(id : int)
 
 ex :
 
-await nom.GETmediaWithoutToken(21);
+await api.GETmediaWithoutToken(21);
 
 
 

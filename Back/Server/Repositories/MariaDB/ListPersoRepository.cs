@@ -47,7 +47,8 @@ namespace Server.Repositories.MariaDB
                 foreach (var listPerso in listPersos)
                 {
                     listPerso.Anime = this.context.Animes.FirstOrDefault(r => r.Id == listPerso.AnimeId);
-                    listPerso.User = this.context.Users.FirstOrDefault(u => u.Id == listPerso.UserId);
+                    //listPerso.User = this.context.Users.FirstOrDefault(u => u.Id == listPerso.UserId);
+                    listPerso.CategoryListPerso = this.context.CategoryListPersos.FirstOrDefault(c => c.Id == listPerso.CategoryListPersoId);
                 }
             }
             return listPersos;
