@@ -38,6 +38,11 @@ namespace Server.Controllers
             return this.service.GetListPersosByUserId(id);
         }
 
+        [HttpGet("User/{userId}/Anime/{animeId}")]
+        public IListPerso GetListPersoByUserIdAndAnimeId(int userId, int animeId)
+        {
+            return this.service.GetListPersoByUserIdAndAnimeId(userId, animeId);
+        }
 
         [HttpPost]
         public IListPerso AddListPerso(ListPerso listPerso)

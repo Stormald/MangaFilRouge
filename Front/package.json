@@ -26,7 +26,7 @@
     "latest": "^0.2.0",
     "ng-bootstrap": "^1.6.3",
     "ngx-infinite-scroll": "^10.0.1",
-    "ouranilist-api": "^1.1.0",
+    "ouranilist-api": "^1.2.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

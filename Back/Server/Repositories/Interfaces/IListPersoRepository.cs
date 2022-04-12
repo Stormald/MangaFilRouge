@@ -13,6 +13,7 @@ namespace Server.Repositories.Interfaces
         IEnumerable<ListPerso> GetListPersos();
         IEnumerable<ListPerso> GetListPersosByUserId(int id);
         ListPerso AddListPerso(ListPerso listPerso);
+        ListPerso GetListPersoByUserIdAndAnimeId(int userId, int animeId);
         ListPerso UpdateListPerso(ListPerso listPerso);
         void DeleteListPerso(int id);
 
