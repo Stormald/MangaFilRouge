@@ -23,7 +23,7 @@
                     <label for="status">Status : </label>
                     <select class="btn btn-outline-dark select-form MargLeft" id="status" formControlName="StatusControl">
                         <option [ngValue]="null" placeholder="Status" disabled hidden></option>
-                        <option *ngFor="let status of dataStatus; let i = index">{{status.label}}</option>
+                        <option *ngFor="let status of dataStatus; let i = index" [ngValue]="status">{{status.label}}</option>
                     </select>
                  </div>
              </div>

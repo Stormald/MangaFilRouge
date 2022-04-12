@@ -48,11 +48,13 @@ namespace Server
             services.AddTransient<IReviewRepository, ReviewRepository>();
             services.AddTransient<IAnimeRepository, AnimeRepository>();
             services.AddTransient<IUsersRepository, UsersRepository>();
+            services.AddTransient<IListPersoRepository, ListPersoRepository>();
 
             // SERVICES
             services.AddTransient<ICategoryListPersoService, CategoryListPersoService>();
             services.AddTransient<IReviewService, ReviewService>();
             services.AddTransient<IAnimeService, AnimeService>();
+            services.AddTransient<IListPersoService, ListPersoService>();
 
             services.AddControllers().AddJsonOptions(options =>
             {
