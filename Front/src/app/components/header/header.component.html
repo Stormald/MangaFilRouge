@@ -44,6 +44,9 @@
             </div>
             <div class="col-lg-1">
                 <div class="header__right">
+                    <button *ngIf="user" class="btn btn-danger btn-sm" (click)="logout()">
+                        <i class="fa fa-sign-out-alt"></i><br><small>Se déconnecter</small>
+                    </button>
                     <a [routerLink]="['/login']"><i class="fa fa-user"></i></a>
                 </div>
             </div>
