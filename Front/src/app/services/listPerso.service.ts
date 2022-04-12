@@ -12,8 +12,8 @@ export class ListPersoService {
 
   constructor(private http: HttpClient) { }
 
-  getListPerso(id: number) : Observable<ListPerso> {
-    return this.http.get<ListPerso>(`${environment.apiUrl}/ListPerso/${id}`);
+  getListPerso(idUser: number, idAnime: number) : Observable<ListPerso> {
+    return this.http.get<ListPerso>(`${environment.apiUrl}/ListPerso/User/${idUser}/Anime/${idAnime}`);
   }
 
   getAllListPersosByUserId(id: number) {

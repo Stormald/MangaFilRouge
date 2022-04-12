@@ -66,5 +66,18 @@ namespace Server.Repositories.MariaDB
             this.context.SaveChanges();
             return listPerso;
         }
+
+        public ListPerso GetListPersoByUserIdAndAnimeId(int userId, int animeId)
+        {
+            ListPerso listPerso = this.context.ListPersos.FirstOrDefault(a => a.UserId == userId && a.AnimeId == animeId);
+            if (listPerso != null)
+            {
+                //listPerso.Anime = this.context.Animes.FirstOrDefault(r => r.Id == listPerso.AnimeId);
+                //listPerso.User = this.context.Users.FirstOrDefault(u => u.Id == listPerso.UserId);
+                listPerso.CategoryListPerso = this.context.CategoryListPersos.FirstOrDefault(c => c.Id == listPerso.CategoryListPersoId);
+                listPerso.CategoryListPerso.ListPersos = null;
+            }
+            return listPerso;
+        }
     }
 }

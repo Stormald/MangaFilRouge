@@ -37,7 +37,7 @@
              </div>
              <div class="MargTop5">
                 <label for="Rate">Score :  </label>
-                <ngb-rating class="MargLeft" [(rate)]="currentRate" id="Rate" formControlName="Rate"></ngb-rating> 
+                <ngb-rating class="MargLeft" [(rate)]="currentRate" id="Rate"></ngb-rating> 
                 {{currentRate}} / 10
              </div>
              <div class="MargTop5">
@@ -45,14 +45,14 @@
                 <input class="MargLeft" id="Episode" type="number" formControlName="Episode">
              </div>
               
-            <button type="button" class="btn btn-dark btnAdd" (click)="addToMyList(anime)">ADD TO MY LIST</button>
+            <button type="button" id="validateButton" class="btn btn-dark btnAdd" (click)="addToMyList(anime)">ADD TO MY LIST</button>
         </form>
     </div>
   </ng-template>
   
   <!-- <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Add to My List <i class="fa fa-heart-o"></i></button> -->
   <div class="anime__details__btn"> 
-    <a class="follow-btn" (click)="open(content)">                      
+    <a id="openModalButton" class="follow-btn" (click)="open(content)">                      
         Add to My List <i class="fa fa-heart-o"></i>
     </a>
   </div>

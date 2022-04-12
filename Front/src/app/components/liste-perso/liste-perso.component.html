@@ -9,7 +9,7 @@
                 </a>
                 <div matTooltip="{{ TransformTimeStamp(anime?.data?.Media.nextAiringEpisode.airingAt) }}" *ngIf="anime?.data?.Media.nextAiringEpisode" class="fa en-cours"></div>
             </div>
-            <h5 class="link_to_detail"><a class="btn btn-outline-dark" (click)="goToDetailAnime(anime.animeId)">{{anime?.data.Media.title.romaji}}</a></h5>
+            <h5 class="link_to_detail"><a class="btn btn-outline-dark" (click)="goToDetailAnime(anime.animeId)">{{anime?.data?.Media.title.romaji}}</a></h5>
         </div>
     </div>
 </div>

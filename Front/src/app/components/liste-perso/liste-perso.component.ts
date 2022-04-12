@@ -34,7 +34,7 @@ listePerso: Array<Category> = [{
 listAnimesInList : Array<ListPerso>
 user: User;
 
-  constructor(private router: Router, private route: ActivatedRoute, private service: ListPersoService) { 
+  constructor(private router: Router, private service: ListPersoService) { 
     this.api = require('ouranilist-api');
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
           return false;
@@ -43,7 +43,9 @@ user: User;
   }
 
   ngOnInit(): void {
-    this.getAnimesFromListPerso();
+    if(this.user != null){
+      this.getAnimesFromListPerso();
+    }
   }
 
   async getAnimesFromListPerso() {
@@ -51,14 +53,10 @@ user: User;
       this.listAnimesInList = data
       //console.log(this.listAnimesInList)
       this.listAnimesInList.forEach(anime => {
-        this.api.GETmediaWithoutToken(anime.animeId).then(animeInfos =>{
+        this.api.GETmediaWithLittleInfosWithoutToken(anime.animeId).then(animeInfos =>{
+          console.log(animeInfos)
           this.listePerso[anime.categoryListPersoId-1].animes.push({ ...anime, ...animeInfos});
-          console.log(this.listePerso);
-          //switch(anime.categoryListPerso.label){
-            //case this.listePerso[0].catName:
-            //  this.listePerso[0].animes.push(anime + animeInfos);
-0            //  break; }
-            //console.log(this.listePerso[1].animes[1].data.Media)
+          //console.log(this.listePerso);
         })
       });
     });

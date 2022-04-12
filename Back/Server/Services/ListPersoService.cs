@@ -31,6 +31,11 @@ namespace Server.Services
             return this.repo.GetListPerso(id);
         }
 
+        public IListPerso GetListPersoByUserIdAndAnimeId(int userId, int animeId)
+        {
+            return this.repo.GetListPersoByUserIdAndAnimeId(userId, animeId);
+        }
+
         public IEnumerable<IListPerso> GetListPersos()
         {
             return this.repo.GetListPersos();

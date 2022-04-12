@@ -59,7 +59,7 @@ export class DetailAnimeComponent implements OnInit {
       if(dataBack != null){
         //this.ourDataAnime = new Anime();
         this.ourDataAnime = dataBack;
-        console.log(this.ourDataAnime.reviews.length);
+        //console.log(this.ourDataAnime.reviews.length);
         if (this.NbReview < this.ourDataAnime.reviews.length) {
           this.MoreRev = true;
         }
