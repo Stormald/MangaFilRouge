@@ -83,8 +83,7 @@ export class DetailAnimeComponent implements OnInit {
     }
     else{    
         this.serviceReview.addReview(review).subscribe((dataBack: any) => {
-          //console.log(dataBack);
-          this.ourDataAnime.reviews.push(dataBack);
+          this.getAnimeInfosInOurBack(this.id);
         });
     }
   }

@@ -13,7 +13,7 @@
                 <div class="header__nav">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a [routerLink]="['/']">Homepage</a></li>
+                            <li class="active"><a [routerLink]="['/']">Home</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -27,7 +27,16 @@
                     </nav>
                 </div>
             </div>
-            <div class="col-lg-6 header__right">
+            <div class="col-lg-1">
+                <div class="header__nav">
+                    <nav class="header__menu mobile-menu">
+                        <ul>
+                            <li class="active"><a [routerLink]="['/liste-perso']">Liste</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-lg-5 header__right">
                 <form class="form-inline">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" [formControl]="searchAnimeControl">
                     <button class="btn btn-light" type="submit" [routerLink]="['/anime', { searchName: this.searchAnimeControl.value }]">Search</button>
@@ -35,8 +44,7 @@
             </div>
             <div class="col-lg-1">
                 <div class="header__right">
-                    <a href="#" class="search-switch"><span class="icon_search"></span></a>
-                    <a [routerLink]="['/login']"><span class="icon_profile"></span></a>
+                    <a [routerLink]="['/login']"><i class="fa fa-user"></i></a>
                 </div>
             </div>
         </div>
