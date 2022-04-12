@@ -16,7 +16,7 @@ declare var require: any;
 export class DetailAnimeComponent implements OnInit {
 
   id: number;
-  nom: { GETmediaWithoutToken: (arg0: number) => Promise<any>; };
+  api: { GETmediaWithoutToken: (arg0: number) => Promise<any>; };
   dataAnime: any;
   ourDataAnime: Anime;
   studio: any;
@@ -35,7 +35,7 @@ export class DetailAnimeComponent implements OnInit {
   reviewForm: FormGroup;
 
   constructor(private route: ActivatedRoute, private router: Router, private serviceAnime: AnimeService, private serviceReview: ReviewService) {
-    this.nom = require('ouranilist-api');
+    this.api = require('ouranilist-api');
     this.id = route.snapshot.params.id;
 
     this.reviewForm = new FormGroup({
@@ -114,7 +114,7 @@ export class DetailAnimeComponent implements OnInit {
    * @param id id d'un anime 
    */
   async getAnime(id: number) {
-    await this.nom.GETmediaWithoutToken(id)
+    await this.api.GETmediaWithoutToken(id)
       .then((dataR: any) => {
         //console.log(dataR);
         this.dataAnime = dataR;

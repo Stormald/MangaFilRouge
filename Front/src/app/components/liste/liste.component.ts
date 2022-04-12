@@ -16,7 +16,7 @@ declare var require: any;
 })
 export class ListeComponent implements OnInit {
 
-  nom: any;
+  api: any;
   liste: Array<any>;
   //anime : any;
 
@@ -30,7 +30,7 @@ export class ListeComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute) {
     //this.cpt = 0;
-    this.nom = require('ouranilist-api');
+    this.api = require('ouranilist-api');
     this.liste = [];
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
@@ -58,7 +58,7 @@ export class ListeComponent implements OnInit {
     }
 
     this.mediaType = "ANIME";
-    await this.nom.SEARCHmediasWithoutToken(this.searchName, this.mediaType, 1, 16, this.myFilter).then(data => {
+    await this.api.SEARCHmediasWithoutToken(this.searchName, this.mediaType, 1, 16, this.myFilter).then(data => {
       this.liste = data.data.Page.media;
       this.page = data.data.Page.pageInfo.currentPage;
       this.lastPage = data.data.Page.pageInfo.lastPage;
@@ -86,7 +86,7 @@ export class ListeComponent implements OnInit {
       this.page++;
     }
       //console.log("search : "+ this.searchName);
-    await this.nom.SEARCHmediasWithoutToken(this.searchName, this.mediaType, this.page, 8, this.myFilter).then(data => {
+    await this.api.SEARCHmediasWithoutToken(this.searchName, this.mediaType, this.page, 8, this.myFilter).then(data => {
       this.liste = this.liste.concat(data.data.Page.media);
       this.lastPage = data.data.Page.pageInfo.lastPage;
       //console.log(this.liste);

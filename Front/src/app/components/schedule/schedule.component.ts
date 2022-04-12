@@ -12,7 +12,7 @@ declare var require: any;
 })
 export class ScheduleComponent implements OnInit {
 
-  nom: any;
+  api: any;
   week: Array<Day> = [];
   currentDate: Date;
   inSixDayDate: Date = new Date();
@@ -22,7 +22,7 @@ export class ScheduleComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute) {
     //this.cpt = 0;
-    this.nom = require('ouranilist-api');
+    this.api = require('ouranilist-api');
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     }
@@ -101,7 +101,7 @@ async getAnimes() {
   day6.setDate(this.currentDate.getDate()+6);
 
   do{
-  await this.nom.SEARCHscheduleWithoutToken(Math.floor(this.currentDate.getTime()/1000), Math.floor(this.inSixDayDate.getTime()/1000), this.page, 50).then(data => {
+  await this.api.SEARCHscheduleWithoutToken(Math.floor(this.currentDate.getTime()/1000), Math.floor(this.inSixDayDate.getTime()/1000), this.page, 50).then(data => {
     for(let schedule of data.data.Page.airingSchedules){
       //console.log(schedule.media)
       if(schedule.media.format != "ONA" && schedule.media.isAdult != true){
