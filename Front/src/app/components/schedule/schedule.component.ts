@@ -103,7 +103,8 @@ async getAnimes() {
   do{
   await this.nom.SEARCHscheduleWithoutToken(Math.floor(this.currentDate.getTime()/1000), Math.floor(this.inSixDayDate.getTime()/1000), this.page, 50).then(data => {
     for(let schedule of data.data.Page.airingSchedules){
-      if(schedule.media.format != "ONA"){
+      //console.log(schedule.media)
+      if(schedule.media.format != "ONA" && schedule.media.isAdult != true){
       let dateSortieEpisode = new Date(schedule.airingAt*1000);
       switch (dateSortieEpisode.getDate()) {
         case day0.getDate():

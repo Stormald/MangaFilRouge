@@ -23,6 +23,7 @@ import { AlertComponent } from './components/alert/alert.component';
 import { ModalAddToMyListComponent } from './components/modal-add-to-my-list/modal-add-to-my-list.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ListePersoComponent } from './components/liste-perso/liste-perso.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RegisterComponent,
     AlertComponent,
     ModalAddToMyListComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    ListePersoComponent
   ],
   imports: [
     BrowserModule,
