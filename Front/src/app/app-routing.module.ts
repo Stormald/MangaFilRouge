@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DetailAnimeComponent } from './components/detail-anime/detail-anime.component';
+import { DetailMangaAmateurComponent } from './components/detail-manga-amateur/detail-manga-amateur.component';
 import { HomeComponent } from './components/home/home.component';
 import { ListeMangaComponent } from './components/liste-manga/liste-manga.component';
 import { ListePersoComponent } from './components/liste-perso/liste-perso.component';
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:"schedule", component: ScheduleComponent, pathMatch:'full'},
   {path:"liste-perso", component: ListePersoComponent},
   {path:"liste-manga", component: ListeMangaComponent},
-  {path:"upload-manga", component: UploadMangaComponent}
+  {path:"upload-manga", component: UploadMangaComponent},
+  {path:"manga-amateur/:id", component: DetailMangaAmateurComponent}
 ];
 
 @NgModule({
