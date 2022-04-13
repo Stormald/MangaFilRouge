@@ -54,7 +54,7 @@ user: User;
       //console.log(this.listAnimesInList)
       this.listAnimesInList.forEach(anime => {
         this.api.GETmediaWithLittleInfosWithoutToken(anime.animeId).then(animeInfos =>{
-          console.log(animeInfos)
+          //console.log(animeInfos)
           this.listePerso[anime.categoryListPersoId-1].animes.push({ ...anime, ...animeInfos});
           //console.log(this.listePerso);
         })

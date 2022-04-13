@@ -49,12 +49,14 @@ namespace Server
             services.AddTransient<IAnimeRepository, AnimeRepository>();
             services.AddTransient<IUsersRepository, UsersRepository>();
             services.AddTransient<IListPersoRepository, ListPersoRepository>();
+            services.AddTransient<IMangaAmateurRepository, MangaAmateurRepository>();
 
             // SERVICES
             services.AddTransient<ICategoryListPersoService, CategoryListPersoService>();
             services.AddTransient<IReviewService, ReviewService>();
             services.AddTransient<IAnimeService, AnimeService>();
             services.AddTransient<IListPersoService, ListPersoService>();
+            services.AddTransient<IMangaAmateurService, MangaAmateurService>();
 
             services.AddControllers().AddJsonOptions(options =>
             {

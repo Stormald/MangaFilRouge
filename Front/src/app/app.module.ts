@@ -24,6 +24,9 @@ import { ModalAddToMyListComponent } from './components/modal-add-to-my-list/mod
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ListePersoComponent } from './components/liste-perso/liste-perso.component';
+import { UploadMangaComponent } from './components/upload-manga/upload-manga.component';
+import { ListeMangaComponent } from './components/liste-manga/liste-manga.component';
+import { DetailMangaAmateurComponent } from './components/detail-manga-amateur/detail-manga-amateur.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { ListePersoComponent } from './components/liste-perso/liste-perso.compon
     AlertComponent,
     ModalAddToMyListComponent,
     ScheduleComponent,
-    ListePersoComponent
+    ListePersoComponent,
+    UploadMangaComponent,
+    ListeMangaComponent,
+    DetailMangaAmateurComponent
   ],
   imports: [
     BrowserModule,
