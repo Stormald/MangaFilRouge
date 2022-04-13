@@ -1,0 +1,13 @@
+<button type="button" id="addMangaButton" class="btn btn-light btn-outline-dark navig btnAdd" (click)="addManga()">ADD MANGA</button>
+
+<div *ngFor="let manga of listManga" class="col-lg-2 col-md-2 col-sm-2">
+    <div class="product__item">
+        <div class="product__item__pic">
+            <a (click)="goToMangaAmateur(manga.id)">
+                <img class="set-bg" src="{{manga.front_Picture}}">
+            </a>
+        </div>
+        <h5 class="link_to_detail"><a class="btn btn-outline-dark" (click)="goToMangaAmateur(manga.id)">{{manga.title}}</a></h5>
+    </div>
+</div>
+  

@@ -157,13 +157,28 @@ namespace Server
                     .HasMaxLength(30)
                     .HasColumnName("status");
 
+                entity.Property(e => e.Title)
+                    .IsRequired()
+                    .HasMaxLength(150)
+                    .HasColumnName("title");
+
+                entity.Property(e => e.Path_Folder)
+                    .IsRequired()
+                    .HasMaxLength(500)
+                    .HasColumnName("path_folder");
+
+                entity.Property(e => e.Front_Picture)
+                    .IsRequired()
+                    .HasMaxLength(500)
+                    .HasColumnName("front_picture");
+
                 entity.Property(e => e.UserId)
                     .HasColumnType("int(11)")
                     .HasColumnName("user_id");
 
                 entity.HasOne(d => d.User)
                     .WithOne(p => p.MangaAmateur)
-                    .HasForeignKey<MangaAmateur>(d => d.Id)
+                    .HasForeignKey<MangaAmateur>(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_UserMangaAmateur");
             });
