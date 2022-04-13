@@ -164,7 +164,6 @@ namespace Server
 
                 entity.Property(e => e.Path_Folder)
                     .IsRequired()
-                    .HasMaxLength(500)
                     .HasColumnName("path_folder");
 
                 entity.Property(e => e.Front_Picture)

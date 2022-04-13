@@ -13,7 +13,7 @@ import { MangaService } from 'src/app/services/manga.service';
 export class UploadMangaComponent implements OnInit {
 
   FormUploadManga: FormGroup;
-  folder: string;
+  folder: string = "";
   constructor(private router: Router, private service: MangaService) {
     this.FormUploadManga = new FormGroup({
       title: new FormControl(null, Validators.required),
@@ -29,7 +29,7 @@ export class UploadMangaComponent implements OnInit {
     let user = JSON.parse(sessionStorage.getItem('currentUser'));
     if(user != null){
       let split = this.FormUploadManga.get("front_picture").value.split("\\");
-      let manga : Manga = {id: null, status: "ACCEPTED", title: this.FormUploadManga.get("title").value, front_Picture: "assets/Mangas-Amateurs/"+split[split.length-1], path_Folder: "assets/Mangas-Amateurs/"+this.folder, userId: user.id}  
+      let manga : Manga = {id: 0, status: "ACCEPTED", title: this.FormUploadManga.get("title").value, front_Picture: "assets/Mangas-Amateurs/"+split[split.length-1], path_Folder: this.folder, userId: user.id}  
       console.log(manga);
       this.service.addManga(manga).subscribe();
 
@@ -45,11 +45,17 @@ export class UploadMangaComponent implements OnInit {
   }
 
   selectFolder(e) {
-    console.log("Prob");
-    var theFiles = e.target.files;
-    var relativePath = theFiles[0].webkitRelativePath;
-    this.folder = relativePath.split("/")[0];
-    console.log(this.folder);
+    //console.log("Prob");
+
+    var theFiles : Array<any> = e.target.files;
+    for (let index = 0; index < theFiles.length; index++)  {
+      this.folder+=theFiles[index].webkitRelativePath+";"
+    }
+   
+    //var relativePath = theFiles[0].webkitRelativePath;
+    //console.log(theFiles);
+    //this.folder = relativePath.split("/")[0];
+    //console.log(this.folder);
     //alert(folder[0]);
   }
 }

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 import { Manga } from '../models/manga.model';
@@ -10,6 +11,11 @@ import { Manga } from '../models/manga.model';
 export class MangaService {
 
   constructor(private http: HttpClient) { }
+
+
+  getManga(id: number) : Observable<Manga> {
+    return this.http.get<Manga>(`${environment.apiUrl}/MangaAmateur/${id}`);
+  }
 
   getAllMangas() {
     return this.http.get<Manga[]>(`${environment.apiUrl}/MangaAmateur`);
