@@ -120,7 +120,7 @@ export class ModalAddToMyListComponent implements OnInit {
       this.serviceListPerso.getListPerso(this.user.id, this.animeId).subscribe(data => {
         if (data != null) {
           this.inList = data;
-          console.log(this.inList)
+          //console.log(this.inList)
           this.currentRate = this.inList.score;
           this.FormAddList.get("checked").setValue(this.inList.privacy);
           this.FormAddList.get("favorites").setValue(this.inList.favorite);
@@ -132,7 +132,7 @@ export class ModalAddToMyListComponent implements OnInit {
           if(document.getElementById("validateButton") != null)
           document.getElementById("validateButton").innerText = "MODIFY";
 
-          console.log(this.inList);
+          //console.log(this.inList);
         }
         else {
           this.initFormValue();
