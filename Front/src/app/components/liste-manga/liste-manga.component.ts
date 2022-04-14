@@ -17,7 +17,7 @@ listManga: Array<Manga> = [];
   ngOnInit(): void {
     this.service.getAllMangas().subscribe(data =>{
       this.listManga = data;
-      console.log(this.listManga[0]);
+      //console.log(this.listManga[0]);
     });
   }
 
