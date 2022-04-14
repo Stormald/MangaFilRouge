@@ -25,7 +25,7 @@ folder: string;
     this.service.getManga(this.id).subscribe(data =>{
       //console.log(data);
       this.currentManga = data;
-      this.currentManga.path_Folder.split(";").forEach(element => {
+      this.currentManga.path_Folder.split(";").sort().forEach(element => {
         if(element!="")
         this.listPages.push("assets/Mangas-Amateurs/"+element);
       });
