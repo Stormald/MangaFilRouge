@@ -28,7 +28,7 @@ namespace Server.Repositories.MariaDB
             this.context.ListPersos.Remove(this.context.ListPersos.FirstOrDefault(a => a.UserId == id));
         }
 
-        public ListPerso GetListPerso(int id)
+        public ListPerso GetListPerso(int id) //NOT USED
         {
             ListPerso listPerso = this.context.ListPersos.FirstOrDefault(a => a.UserId == id && a.AnimeId == id);
 
@@ -42,15 +42,15 @@ namespace Server.Repositories.MariaDB
         {
             List<ListPerso> listPersos = this.context.ListPersos.Where(a => a.UserId == id).ToList();
 
-            if (listPersos != null)
+            /*if (listPersos != null)
             {
                 foreach (var listPerso in listPersos)
                 {
-                    listPerso.Anime = this.context.Animes.FirstOrDefault(r => r.Id == listPerso.AnimeId);
+                    //listPerso.Anime = this.context.Animes.FirstOrDefault(r => r.Id == listPerso.AnimeId);
                     //listPerso.User = this.context.Users.FirstOrDefault(u => u.Id == listPerso.UserId);
-                    listPerso.CategoryListPerso = this.context.CategoryListPersos.FirstOrDefault(c => c.Id == listPerso.CategoryListPersoId);
+                    //listPerso.CategoryListPerso = this.context.CategoryListPersos.FirstOrDefault(c => c.Id == listPerso.CategoryListPersoId);
                 }
-            }
+            }*/
             return listPersos;
         }
 
@@ -70,13 +70,13 @@ namespace Server.Repositories.MariaDB
         public ListPerso GetListPersoByUserIdAndAnimeId(int userId, int animeId)
         {
             ListPerso listPerso = this.context.ListPersos.FirstOrDefault(a => a.UserId == userId && a.AnimeId == animeId);
-            if (listPerso != null)
+            /*if (listPerso != null)
             {
                 //listPerso.Anime = this.context.Animes.FirstOrDefault(r => r.Id == listPerso.AnimeId);
                 //listPerso.User = this.context.Users.FirstOrDefault(u => u.Id == listPerso.UserId);
-                listPerso.CategoryListPerso = this.context.CategoryListPersos.FirstOrDefault(c => c.Id == listPerso.CategoryListPersoId);
-                listPerso.CategoryListPerso.ListPersos = null;
-            }
+                //listPerso.CategoryListPerso = this.context.CategoryListPersos.FirstOrDefault(c => c.Id == listPerso.CategoryListPersoId);
+                //listPerso.CategoryListPerso.ListPersos = null;
+            }*/
             return listPerso;
         }
     }

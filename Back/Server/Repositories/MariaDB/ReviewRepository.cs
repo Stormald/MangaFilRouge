@@ -19,7 +19,7 @@ namespace Server.Repositories.MariaDB
         public Review AddReview(Review review)
         {
             this.context.Reviews.Add(review);
-            Console.WriteLine(review);
+            //Console.WriteLine(review);
             this.context.SaveChanges();
             return review;
         }
