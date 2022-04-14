@@ -1,5 +1,5 @@
 <div class="carouselCont">
-    <ngb-carousel #carousel>
+    <ngb-carousel #carousel [interval]="0">
         <ng-template ngbSlide *ngFor="let img of listPages; index as i">
             <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank" rel="nofollow noopener noreferrer">
                 <div class="picsum-img-wrapper">
