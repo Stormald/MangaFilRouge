@@ -5,11 +5,11 @@
         <div class="product__item">
             <div class="product__item__pic">
                 <a (click)="goToDetailAnime(anime.animeId)">
-                    <img class="set-bg" src="{{anime?.data?.Media.coverImage.extraLarge}}">
+                    <img class="set-bg" src="{{anime?.coverImage.extraLarge}}">
                 </a>
-                <div matTooltip="{{ TransformTimeStamp(anime?.data?.Media.nextAiringEpisode.airingAt) }}" *ngIf="anime?.data?.Media.nextAiringEpisode" class="fa en-cours"></div>
+                <div matTooltip="{{ TransformTimeStamp(anime?.nextAiringEpisode.airingAt) }}" *ngIf="anime?.nextAiringEpisode" class="fa en-cours"></div>
             </div>
-            <h5 class="link_to_detail"><a class="btn btn-outline-dark" (click)="goToDetailAnime(anime.animeId)">{{anime?.data?.Media.title.romaji}}</a></h5>
+            <h5 class="link_to_detail"><a class="btn btn-outline-dark" (click)="goToDetailAnime(anime.animeId)">{{anime?.title.romaji}}</a></h5>
         </div>
     </div>
 </div>
