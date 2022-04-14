@@ -1,0 +1,58 @@
+<ng-template #content let-c="close" let-d="dismiss">
+    
+    <div class="modal-header">
+        <!-- <div class="banner" *ngIf="anime?.data.Media.bannerImage" style="background-image: url({{anime?.data.Media.bannerImage}});">
+            <div class="shadow"></div>
+        </div>
+        <div class="anime__details__content"> 
+            <div class="row"> 
+                <div class="col-lg-3"> 
+                    <div class="anime set-bg" [ngStyle]="{ 'background-image': 'url(' + anime?.data.Media.coverImage.extraLarge + ')'}">
+                    </div>
+                </div>
+            </div>
+        </div> -->
+      <h4 class="modal-title" id="modal-basic-title">{{anime?.data.Media.title.english}} - {{anime?.data.Media.title.romaji}}</h4>
+      <button type="button" id="closeModalButton" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+
+        <form [formGroup]="FormAddList">
+            <div class="row">
+                <div ngbDropdown class="d-inline-block MargTop5">
+                    <label for="status">Status : </label>
+                    <select class="btn btn-outline-dark select-form MargLeft" id="status" formControlName="StatusControl">
+                        <option [ngValue]="null" placeholder="Status" disabled hidden></option>
+                        <option *ngFor="let status of dataStatus; let i = index" [ngValue]="status">{{status.label}}</option>
+                    </select>
+                 </div>
+             </div>
+             <div class="MargTop5">
+                <label for="privacy">Privacy :  </label>
+                <input class="MargLeft" type="checkbox" id="privacy" formControlName="checked" />  
+             </div>
+             <div class="MargTop5">
+                <label for="favorites">Add to favorites :  </label>
+                <input class="MargLeft" type="checkbox" id="favorites" formControlName="favorites" />  
+             </div>
+             <div class="MargTop5">
+                <label for="Rate">Score :  </label>
+                <ngb-rating class="MargLeft" [(rate)]="currentRate" id="Rate"></ngb-rating> 
+                {{currentRate}} / 10
+             </div>
+             <div class="MargTop5">
+                <label for="Episode">Episode Progress :  </label>
+                <input class="MargLeft" id="Episode" type="number" formControlName="Episode">
+             </div>
+              
+            <button type="button" id="validateButton" class="btn btn-dark btnAdd" (click)="addToMyList(anime)">ADD TO MY LIST</button>
+        </form>
+    </div>
+  </ng-template>
+  
+  <!-- <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Add to My List <i class="fa fa-heart-o"></i></button> -->
+  <div class="anime__details__btn"> 
+    <a id="openModalButton" class="follow-btn" (click)="open(content)">                      
+        Add to My List <i class="fa fa-heart-o"></i>
+    </a>
+  </div>

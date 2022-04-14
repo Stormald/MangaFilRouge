@@ -1,0 +1,15 @@
+<div *ngFor="let cat of listePerso" class="row">
+    <h3>{{cat.catName}}</h3>
+    <div *ngIf="cat.animes.length < 1"><h4>Empty</h4></div>
+    <div *ngFor="let anime of cat.animes" class="col-lg-2 col-md-2 col-sm-2">
+        <div class="product__item">
+            <div class="product__item__pic">
+                <a (click)="goToDetailAnime(anime.animeId)">
+                    <img class="set-bg" src="{{anime?.data?.Media.coverImage.extraLarge}}">
+                </a>
+                <div matTooltip="{{ TransformTimeStamp(anime?.data?.Media.nextAiringEpisode.airingAt) }}" *ngIf="anime?.data?.Media.nextAiringEpisode" class="fa en-cours"></div>
+            </div>
+            <h5 class="link_to_detail"><a class="btn btn-outline-dark" (click)="goToDetailAnime(anime.animeId)">{{anime?.data?.Media.title.romaji}}</a></h5>
+        </div>
+    </div>
+</div>

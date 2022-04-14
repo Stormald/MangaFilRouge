@@ -1,0 +1,11 @@
+<div class="carouselCont">
+    <ngb-carousel #carousel>
+        <ng-template ngbSlide *ngFor="let img of listPages; index as i">
+            <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank" rel="nofollow noopener noreferrer">
+                <div class="picsum-img-wrapper">
+                    <img [src]="img" style="max-height:800px; margin:0 auto;" alt="My image {{i + 1}} description">
+                </div>
+            </a>
+        </ng-template>
+    </ngb-carousel>
+</div>

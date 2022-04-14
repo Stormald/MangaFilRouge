@@ -1,0 +1,11 @@
+.carouselCont{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+ngb-carousel{
+    margin-top: 50px;
+}

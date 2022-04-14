@@ -1,21 +1,61 @@
 <!-- Anime Section Begin --> 
 <section class="anime-details spad"> 
-    <div class="banner" style="background-image: url({{dataAnime?.data.Media.bannerImage}});">
+    <div class="banner" *ngIf="dataAnime?.data.Media.bannerImage"style="background-image: url({{dataAnime?.data.Media.bannerImage}});">
         <div class="shadow"></div>
     </div>
     <div class="container"> 
         <div class="anime__details__content"> 
             <div class="row"> <div class="col-lg-3"> 
                 <div class="anime__details__pic set-bg" [ngStyle]="{ 'background-image': 'url(' + dataAnime?.data.Media.coverImage.extraLarge + ')'}"> <!--{{anime.data.Media.coverImage.medium}}--> 
-                    <div matTooltip="{{ DateNextEpisode }}" *ngIf="dataAnime?.data.Media.nextAiringEpisode" class="comment">
+                    <div matTooltip="{{ TransformTimeStamp(dataAnime?.data.Media.nextAiringEpisode?.airingAt) }}" *ngIf="dataAnime?.data.Media.nextAiringEpisode" class="comment">
                         <i class="fa fa-calendar"></i> Next Episode N°{{dataAnime?.data.Media.nextAiringEpisode.episode}} in {{jour}} days {{heure}}h {{min}}m
                     </div> 
-                </div> 
+                </div>
+                <app-modal-add-to-my-list class="row margingTop5" [anime] = dataAnime></app-modal-add-to-my-list>
+                <!-- Anime SideBAR Begin --> 
+                <div class="SideBar">
+                    <div *ngIf="dataAnime?.data.Media.title" class="elementSideBAr">
+                        <span  class="elementTag">Title:</span> 
+                        <p *ngIf="dataAnime?.data.Media.title.english" class="elementtexte">English: {{dataAnime?.data.Media.title.english}}</p>
+                        <p *ngIf="dataAnime?.data.Media.title.romaji" class="elementtexte">Romaji: {{dataAnime?.data.Media.title.romaji}}</p>
+                    </div>
+                    <div *ngIf="dataAnime?.data.Media.popularity" class="elementSideBAr">
+                        <span class="elementTag">Popularity:</span>
+                        <p class="elementtexte">{{dataAnime?.data.Media.popularity}}</p>
+                    </div>
+                    <div *ngIf="dataAnime?.data.Media.source" class="elementSideBAr">
+                        <span class="elementTag">Source:</span>
+                        <p class="elementtexte">{{dataAnime?.data.Media.source}}</p>
+                    </div>
+                    <div *ngIf="dataAnime?.data.Media.genres" class="elementSideBAr">
+                        <span class="elementTag">Genres:</span>
+                        <p class="elementtexte" *ngFor="let genre of dataAnime?.data.Media.genres">{{genre}}</p>
+                    </div>
+                    <div *ngIf="dataAnime?.data.Media.tags" class="elementSideBAr">
+                        <span class="elementTag">Tags:</span>
+                        <div *ngFor="let tag of dataAnime?.data.Media.tags; let i =index">
+                            <p class="elementtexte" *ngIf="i<15">{{tag.name}}</p>
+                        </div>
+                    </div>
+                    <div *ngIf="dataAnime?.data.Media.studios.nodes" class="elementSideBAr">
+                        <span class="elementTag">Studios:</span>
+                        <p class="elementtexte" *ngFor="let studio of dataAnime?.data.Media.studios.nodes">{{studio.name}}</p>
+                    </div>
+                    <div *ngIf="dataAnime?.data.Media.synonyms" class="elementSideBAr">
+                        <span class="elementTag">Synonyms:</span>
+                        <p class="elementtexte" *ngFor="let synonym of dataAnime?.data.Media.synonyms">{{synonym}}</p>
+                    </div>
+                    <div *ngIf="dataAnime?.data.Media.hashtag" class="elementSideBAr">
+                        <span class="elementTag">Hashtag:</span>
+                        <p class="elementtexte">{{dataAnime?.data.Media.hashtag}}</p>
+                    </div>
+                </div>
+                <!-- Anime SideBAR END --> 
             </div> 
             <div class="col-lg-9"> 
                 <div class="anime__details__text"> 
                     <div class="anime__details__title"> 
-                        <h3>{{dataAnime?.data.Media.title.romaji}}</h3> 
+                        <h3 class="TitleAnime">{{dataAnime?.data.Media.title.romaji}}</h3> 
                         <span>{{dataAnime?.data.Media.title.english}}</span> 
                     </div>
                     <div class="anime__details__rating">
@@ -32,59 +72,73 @@
                         </a>
                     </div>
                     
-                    <div class="anime__details__widget"> 
-                        <div class="row"> 
-                            <div class="col-lg-6 col-md-6">
+                    <div class="anime__details__widget">
+                        <!-- List information Section Begin -->
+                        <div class="row margingTop5"> 
+                            <div class="col-lg-6 col-md-6 ">
                                  <ul>
                                     <li *ngIf="dataAnime?.data.Media.type"><span>Type:</span> {{dataAnime?.data.Media.type}}</li>
                                     <li *ngIf="dataAnime?.data.Media.format"><span>Format:</span> {{dataAnime?.data.Media.format}}</li>
                                     <li *ngIf="dataAnime?.data.Media.status"><span>Status:</span> {{dataAnime?.data.Media.status}}</li>
                                     <li *ngIf="dataAnime?.data.Media.isAdult"><span>Adult:</span> {{dataAnime?.data.Media.isAdult}}</li>
-                                    <li *ngIf="dataAnime?.data.Media.isLicensed"><span>Licensed:</span> {{dataAnime?.data.Media.isLicensed ? 'True': 'False'}} </li>
                                     <li *ngIf="dataAnime?.data.Media.startDate.year"><span>Start Date:</span> {{dataAnime?.data.Media.startDate.day}}/{{dataAnime?.data.Media.startDate.month}}/{{dataAnime?.data.Media.startDate.year}}</li>
-                                    <li><span>Genre:</span> <div *ngFor="let genre of dataAnime?.data.Media.genres">{{genre}}</div></li>
                                 </ul>
                             </div> 
                             <div class="col-lg-6 col-md-6"> 
                                 <ul> 
                                     <li *ngIf="dataAnime?.data.Media.episodes"><span>Episodes:</span> {{dataAnime?.data.Media.episodes}}</li> 
-                                    <li *ngIf="dataAnime?.data.Media.duration"><span>Duration:</span> {{dataAnime?.data.Media.duration}}</li> 
+                                    <li *ngIf="dataAnime?.data.Media.duration"><span>Duration:</span> {{dataAnime?.data.Media.duration}} min</li> 
                                     <li *ngIf="dataAnime?.data.Media.seasonInt"><span>Saison:</span> {{dataAnime?.data.Media.season}} {{dataAnime?.data.Media.seasonYear}}</li> 
+                                    <li *ngIf="dataAnime?.data.Media.isLicensed"><span>Licensed:</span> {{dataAnime?.data.Media.isLicensed ? 'True': 'False'}} </li>
                                     <li *ngIf="dataAnime?.data.Media.endDate.year"><span>End Date:</span> {{dataAnime?.data.Media.endtDate?.day}}/{{dataAnime?.data.Media.endDate?.month}}/{{dataAnime?.data.Media.endDate?.year}}</li>
-                                    <li><span>Studios:</span> <div *ngFor="let studio of dataAnime?.data.Media.studios.nodes">{{studio.name}}</div></li>
+                                    
                                 </ul> 
                             </div> 
                             <div>
                                 
                             </div>
                         </div>
-                        <div class="row">
+                        <!-- List information Section END -->
+                        <div class="row margingTop5">
                             <!-- Review Section Begin --> 
                             <div class="col-lg-8 col-md-8">
                                 <div class="anime__details__review">
                                     <div class="section-title">
                                         <h5>Reviews</h5>
                                     </div>
-                                    <div *ngFor="let review of dataAnime?.data.Media.reviews.edges" class="anime__review__item">
-                                        <div class="anime__review__item__pic">
-                                            <img src="img/anime/review-1.jpg" alt="">
+                                    <div *ngFor="let review of ourDataAnime?.reviews; let i = index" class="anime__review__item">
+                                        <div *ngIf="i<NbReview">
+                                            <div class="anime__review__item__pic">
+                                                <img src="assets/img/review-1.jpg" alt="">
+                                            </div>
+                                            <div class="anime__review__item__text">
+                                                <h3>{{review.user.pseudo}}</h3>
+                                                <h6><span>Score {{review.scoreReview}} </span></h6>
+                                                <p>{{review.text}}</p>
+                                            </div>
                                         </div>
-                                        <div class="anime__review__item__text">
-                                            <h6><span>Rating {{review.node.rating}} - Score {{review.node.score}} </span></h6>
-                                            <p>{{review.node.summary}}</p>
-                                        </div>
+                                    </div>
+                                    <div>
+                                        <a *ngIf="MoreRev" class="read-more.content-read-more more-link read-more read-more.content-read-more:hover more-link:hover read-more:hover"  type="button" (click)="MoreReview()" >
+                                            Look for more reviews
+                                         </a>
                                     </div>
                                 </div>
                                 <div class="anime__details__form">
-                                    <div class="section-title">
-                                        <h5>Your Comment</h5>
-                                    </div>
-                                    <form action="#">
-                                        <textarea placeholder="Your Comment"></textarea>
-                                        <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
+                                    <form [formGroup]="reviewForm">
+                                        <div class="section-title">
+                                            <h5>Your Comment</h5>
+                                        </div>
+                                        <select class="select-form" formControlName="scoreControl">
+                                            <option [ngValue]="null" disabled hidden>Select Score</option>
+                                            <option *ngFor="let score of [].constructor(11); let i = index" [ngValue]="i">{{i}}</option>
+                                        </select>
+                                        <textarea placeholder="Your Comment" formControlName="textControl"></textarea>
+                                        <button type="submit" (click)="addReview()"><i class="fa fa-location-arrow"></i> Review</button>
                                     </form>
                                 </div>
                             </div>
+                            <!-- Review Section END -->
                             <!-- Review Section END -->
                             <!-- Recommandation Section Begin --> 
                             <div class="col-lg-4 col-md-4">
@@ -92,18 +146,27 @@
                                     <div class="section-title">
                                         <h5>you might like...</h5>
                                     </div>
-                                    <div *ngFor="let recommendations of dataAnime?.data.Media.recommendations.nodes" class="product__sidebar__view__item set-bg" [ngStyle]="{ 'background-image': 'url(' + recommendations.mediaRecommendation.coverImage.large + ')'}">
-                                        <h5><a href="#">{{recommendations.mediaRecommendation.title.english}}</a></h5>
+                                    <div *ngFor="let recommendations of dataAnime?.data.Media.recommendations?.nodes; let i = index" >
+                                        <div *ngIf="i<NbRecommandation" >
+                                            <div  class="product__sidebar__view__item set-bgReco" [ngStyle]="{ 'background-image': 'url(' + recommendations.mediaRecommendation.coverImage.large + ')'}">
+                                            </div>
+                                            <h5 *ngIf="recommendations.mediaRecommendation.title?.english" class="TitreRecommendations"><a class="btn btn-outline-dark TitreRecommendations" (click)="goToDetailAnime(recommendations.mediaRecommendation.id)">{{recommendations.mediaRecommendation.title.english}}</a></h5>
+                                            <h5 *ngIf="!recommendations.mediaRecommendation.title?.english && recommendations.mediaRecommendation.title?.romaji" class="TitreRecommendations"><a class="btn btn-outline-dark TitreRecommendations" (click)="goToDetailAnime(recommendations.mediaRecommendation.id)">{{recommendations.mediaRecommendation.title.romaji}}</a></h5>
+                                            <h5 *ngIf="!recommendations.mediaRecommendation.title?.english && !recommendations.mediaRecommendation.title?.romaji && !recommendations.mediaRecommendation.title?.native" class="TitreRecommendations"><a class="btn btn-outline-dark TitreRecommendations" (click)="goToDetailAnime(recommendations.mediaRecommendation.id)">{{recommendations.mediaRecommendation.title.native}}</a></h5>
+                                        </div>
                                     </div>
+                                    <div>
+                                        <a *ngIf="MoreRecom" class="read-more.content-read-more more-link read-more read-more.content-read-more:hover more-link:hover read-more:hover"  type="button" (click)="MoreReco()" >
+                                            Look for more recommendations
+                                         </a>
+                                    </div>
+                                    
                                 </div>
                             </div>
+                             <!-- Recommandation Section END --> 
                         </div>
                     </div> 
-                    <div class="anime__details__btn"> 
-                        <a href="#" class="follow-btn">
-                            <i class="fa fa-heart-o"></i> Add to List
-                        </a> 
-                    </div> 
+                    
                 </div> 
             </div> 
         </div> 

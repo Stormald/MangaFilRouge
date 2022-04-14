@@ -179,7 +179,6 @@
 .anime__details__form form textarea {
     width: 100%;
     font-size: 15px;
-    color: #b7b7b7;
     padding-left: 20px;
     padding-top: 12px;
     height: 110px;
@@ -246,4 +245,54 @@
     background: linear-gradient(180deg,rgba(6,13,34,0) 40%,rgba(6,13,34,.6));
     height: 100%;
     width: 100%;
+}
+
+.SideBar{
+    margin-top: 5%;
+    border: solid;
+    border-radius: 5px;
+    border-color: #fff;
+    background-color: #1d1e39;
+    
+}
+.elementSideBAr{
+    color: #fff;
+    padding: 2%;
+}
+
+.elementTag{
+    font-weight: bold;
+    font-size:  medium;
+}
+.elementtexte{
+    color: #fff;
+    margin-left: 35%;
+}
+.margingTop5{
+    margin-top: 5%;
+}
+.TitleAnime{
+font-size: xx-large;
+
+}
+.TitreRecommendations{
+    color: #fff;
+    text-align: center;
+    font-size: small;
+}
+
+textarea{
+    color: black;
+}
+
+::placeholder {
+    color: grey;
+}
+
+.select-form{
+    margin-bottom: 10px;
+}
+
+h3{
+    color: white;
 }

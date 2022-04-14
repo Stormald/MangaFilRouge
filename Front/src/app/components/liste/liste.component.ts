@@ -16,7 +16,7 @@ declare var require: any;
 })
 export class ListeComponent implements OnInit {
 
-  nom: any;
+  api: any;
   liste: Array<any>;
   //anime : any;
 
@@ -30,7 +30,7 @@ export class ListeComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute) {
     //this.cpt = 0;
-    this.nom = require('ouranilist-api');
+    this.api = require('ouranilist-api');
     this.liste = [];
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
@@ -49,7 +49,7 @@ export class ListeComponent implements OnInit {
 
   async getAnime(searchName?: string) {
     this.myFilter = {
-      sort: ["TRENDING_DESC"],
+      sort: ["TRENDING_DESC","POPULARITY_DESC"],
       //status: "RELEASING",
       isAdult: false
     };
@@ -58,16 +58,11 @@ export class ListeComponent implements OnInit {
     }
 
     this.mediaType = "ANIME";
-    await this.nom.SEARCHmediasWithoutToken(this.searchName, this.mediaType, 1, 12, this.myFilter).then(data => {
+    await this.api.SEARCHmediasWithoutToken(this.searchName, this.mediaType, 1, 16, this.myFilter).then(data => {
       this.liste = data.data.Page.media;
       this.page = data.data.Page.pageInfo.currentPage;
       this.lastPage = data.data.Page.pageInfo.lastPage;
-      console.log(data);
-      // data.data.Page.media.forEach(element => {
-      //   console.log(element);
-      //   element = element.push(this.TransformTimeStamp(element.nextAiringEpisode.airingAt));
-      // });
-      // console.log(data);
+      //console.log(data);
     }
     );
 
@@ -77,7 +72,7 @@ export class ListeComponent implements OnInit {
 
   onScrollDown(ev: any) {
     if (this.page != this.lastPage) {
-      console.log("scrolled down!!", ev);
+      //console.log("scrolled down!!", ev);
       //this.cpt++;
       this.appendItems();
     }
@@ -87,13 +82,14 @@ export class ListeComponent implements OnInit {
     if (this.page == 1) {
       this.page = 3;
     }
-    else
+    else{
       this.page++;
-      console.log("search : "+ this.searchName);
-    await this.nom.SEARCHmediasWithoutToken(this.searchName, this.mediaType, this.page, 6, this.myFilter).then(data => {
+    }
+      //console.log("search : "+ this.searchName);
+    await this.api.SEARCHmediasWithoutToken(this.searchName, this.mediaType, this.page, 8, this.myFilter).then(data => {
       this.liste = this.liste.concat(data.data.Page.media);
       this.lastPage = data.data.Page.pageInfo.lastPage;
-      console.log(this.liste);
+      //console.log(this.liste);
     });
   }
 
@@ -110,7 +106,6 @@ export class ListeComponent implements OnInit {
    TransformTimeStamp(timeStamp): String{
     var DateTemp = new Date(timeStamp*1000);
     var DateTMSTP = DateTemp.toDateString() + ", " + DateTemp.toLocaleTimeString();
-    console.log(DateTMSTP);
    return DateTMSTP;
  }
 }

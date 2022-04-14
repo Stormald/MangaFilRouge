@@ -1,0 +1,31 @@
+<div class="container-sm">
+    <div class="row justify-content-md-center">
+        <div class="col-sm-4">
+            <form [formGroup]="FormUploadManga">
+                <div class="form-group row">
+                    <label for="title" class="form-label">Title : </label>
+                    <input type="text" class="form-control" id="title" formControlName="title" />
+                </div>
+
+                <div class="form-group row">
+                    <label for="front_picture" class="form-label">Front Picture : </label>
+                    <input type="file" class="form-control" id="front_picture" formControlName="front_picture" (change)="selectFile($event)" accept="image/png, image/gif, image/jpeg" />
+                </div>
+
+                <div class="form-group row">
+                    <label for="path_folder" class="form-label">Path Folder : </label>
+                    <input type="file" class="form-control" id="path_folder" formControlName="path_folder" (change)="selectFolder($event)" webkitdirectory mozdirectory msdirectory odirectory directory multiple/>
+                </div>
+
+                <button type="button" id="validateButton" class="btn btn-primary btnAdd" (click)="uploadManga()">UPLOAD MANGA</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div>
+    <p id="instructions">
+        To upload a manga, you must name your pages in alphabetical order and then select the folder where your pages are located. For example, you can name them like this:
+        1-page.jpg, ..., 9-page.jpg, 91-page.jpg(pour la 10ème), ..., 991-page.jpg(pour la 19ème), ...
+    </p>
+</div>

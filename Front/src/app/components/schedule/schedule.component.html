@@ -1,0 +1,23 @@
+<div>
+    <a class="btn btn-light btn-outline-dark navig" [routerLink]="['/schedule', { date: this.subSevenDays() }]">Previous week</a>
+    <a class="btn btn-light btn-outline-dark float-right navig" [routerLink]="['/schedule', { date: this.addSevenDays() }]">Next week</a>
+</div>
+<div *ngFor="let day of week" class="week row">
+    <h3>{{day.name}} {{day.date.getDate()}}/{{day.date.getMonth()+1}}/{{day.date.getFullYear()}}</h3>
+    <div *ngFor="let airing of day.airingMedia" class="col-lg-2 col-md-2 col-sm-2">
+        <div class="product__item">
+            <div class="product__item__pic">
+                <a (click)="goToDetailAnime(airing.media.id)">
+                    <img class="set-bg" src="{{airing.media?.coverImage.extraLarge}}">
+                </a>
+               <div class="comment"><i class="fa fa-calendar"></i> {{ TransformTimeUntilAiring(airing?.timeUntilAiring) }}</div>
+               <div class="view">EP : {{airing?.episode}} </div>
+            </div>
+            <h5 class="link_to_detail"><a class="btn btn-outline-dark" (click)="goToDetailAnime(airing.media.id)">{{airing.media.title.romaji}}</a></h5>
+        </div>
+    </div>
+</div>
+<div>
+    <a class="btn btn-light btn-outline-dark navig" [routerLink]="['/schedule', { date: this.subSevenDays() }]">Previous week</a>
+    <a class="btn btn-light btn-outline-dark float-right navig" [routerLink]="['/schedule', { date: this.addSevenDays() }]">Next week</a>
+</div>
