@@ -41,7 +41,7 @@ export class DetailAnimeComponent implements OnInit {
     this.reviewForm = new FormGroup({
       scoreControl: new FormControl(null, Validators.required),
       textControl: new FormControl(null, Validators.required)
-   });
+    });
   }
 
   ngOnInit(): void {
@@ -53,12 +53,13 @@ export class DetailAnimeComponent implements OnInit {
    * @description Get anime infos (reviews,...) from our own back
    * @param id id d'un anime same as the id in the Anilist API
    */
-  async getAnimeInfosInOurBack(id: number) {
-    await this.serviceAnime.getAnime(id).subscribe((dataBack: any) => {
+  getAnimeInfosInOurBack(id: number) {
+    this.serviceAnime.getAnime(id).subscribe((dataBack: any) => {
       //console.log(dataBack);
-      if(dataBack != null){
+      if (dataBack != null) {
         //this.ourDataAnime = new Anime();
         this.ourDataAnime = dataBack;
+        console.log(this.ourDataAnime);
         //console.log(this.ourDataAnime.reviews.length);
         if (this.NbReview < this.ourDataAnime.reviews.length) {
           this.MoreRev = true;
@@ -69,39 +70,47 @@ export class DetailAnimeComponent implements OnInit {
     );
   }
 
-  addAnimeIfNeccessary(review : Review) {
+  async addAnimeIfNeccessary(review: Review) {
     if (this.ourDataAnime == null) {
+      console.log(this.ourDataAnime);
       let newAnime = new Anime();
       newAnime.id = this.id;
-      //console.log(newAnime);
-      this.serviceAnime.addAnime(newAnime).subscribe((ok:any) =>{       
-        this.serviceReview.addReview(review).subscribe((dataBack: any) => {
-          //console.log(dataBack);
-          this.getAnimeInfosInOurBack(this.id);
-        });
+
+      this.serviceAnime.getAnime(this.id).subscribe((getAnime: any) => {
+        if (getAnime == null) {
+          this.serviceAnime.addAnime(newAnime).subscribe((ok: any) => {
+            this.serviceReview.addReview(review).subscribe((dataBack: any) => {
+              this.getAnimeInfosInOurBack(this.id);
+            });
+          });
+        } else {
+          this.serviceReview.addReview(review).subscribe((dataBack: any) => {
+            this.getAnimeInfosInOurBack(this.id);
+          });
+        }
       });
     }
-    else{    
-        this.serviceReview.addReview(review).subscribe((dataBack: any) => {
-          this.getAnimeInfosInOurBack(this.id);
-        });
+    else {
+      this.serviceReview.addReview(review).subscribe((dataBack: any) => {
+        this.getAnimeInfosInOurBack(this.id);
+      });
     }
   }
 
-  addReview() {
+  async addReview() {
     let user = JSON.parse(sessionStorage.getItem('currentUser'));
-    if(user != null){
+    if (user != null) {
       let review = new Review();
       review.scoreReview = this.reviewForm.get("scoreControl").value;
       review.text = this.reviewForm.get("textControl").value;
       review.userId = user.id;
       review.animeId = this.id;
-  
-      this.addAnimeIfNeccessary(review);
-  
+
+      await this.addAnimeIfNeccessary(review);
+
       this.reviewForm.reset();
     }
-    else{
+    else {
       alert("You need to be logged in order to post a review.");
     }
 
